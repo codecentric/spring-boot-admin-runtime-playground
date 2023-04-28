@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  springbootadmin:
+    image: spring-boot-admin:latest
+    ports:
+      - 9090:8080
+      - 9091:8081
+    environment:
+      - SPRING_BOOT_ADMIN_UI_TITLE=Spring Boot Admin - Docker

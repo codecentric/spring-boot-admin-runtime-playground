@@ -1,0 +1,16 @@
+# Allow to discover services in the namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: role-{{ .Values.name }}
+rules:
+- apiGroups:
+    - ""
+  resources:
+    - pods
+    - endpoints
+    - services
+  verbs:
+    - get
+    - list
+    - watch

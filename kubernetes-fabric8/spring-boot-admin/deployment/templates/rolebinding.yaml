@@ -1,0 +1,13 @@
+# Bind the role (to discover services) to the Spring Boot Admin service account
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rolebinding-{{ .Values.name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: role-{{ .Values.name }}
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.name }}-account
+  namespace: {{ .Values.namespace }}

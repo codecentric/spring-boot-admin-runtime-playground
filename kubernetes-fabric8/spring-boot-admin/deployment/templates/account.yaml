@@ -1,0 +1,5 @@
+# Service account for Spring Boot Admin (see Role and RoleBinding)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.name }}-account

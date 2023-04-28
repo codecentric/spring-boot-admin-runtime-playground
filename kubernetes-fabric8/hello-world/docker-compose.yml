@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  hello-secure:
+    image: hello-world:latest
+    ports:
+      - 8080:8080
+      - 8081:8081
