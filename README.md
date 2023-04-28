@@ -1,2 +1,2 @@
 # spring-boot-admin-discovery-playground
-Example projects wih infrastructure for discovery use cases
+Spring Boot Admin example projects including infrastructure for discovery use cases 
