@@ -1,5 +1,7 @@
 ## Spring Boot Admin - Kubernetes Example
 
+Allows to run Spring Boot Admin and one sample app (hello world) in kubernetes. Will guide you through all setup steps for the infrastructure.
+
 ## Enable Kubernetes in Docker Desktop
 
 1. From the Docker Dashboard, select the **Settings**.
