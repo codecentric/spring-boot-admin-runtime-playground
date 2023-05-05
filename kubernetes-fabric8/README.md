@@ -36,6 +36,7 @@ Allows to run Spring Boot Admin and one sample app (hello world) in kubernetes. 
 
 - [./hello-world/README.md](./hello-world/README.md)
 - [./spring-boot-admin/README.md](./spring-boot-admin/README.md)
+- [./health-simulator/README.md](./health-simulator/README.md)
 
 ## Uninstall Apps
 
