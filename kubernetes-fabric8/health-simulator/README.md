@@ -2,7 +2,7 @@
 
 App to simulate changes in health status. Spring Boot Admin reports these in the UI and with browser notifications (if you allow browser notifications).
 
-You can change the number of replicas in [deployment/values.yaml](deployment/values.yaml). Note that calls to http://localhost/health-simulator will reach a random pod if the number of replicas is greater than 0.
+You can change the number of replicas in [deployment/values.yaml](deployment/values.yaml). Note that calls to http://localhost/health-simulator will reach a random pod if the number of replicas is greater than 0. Calls to http://localhost/health-simulator/up ... change the status of a random pod.
 
 ## Build App
 
