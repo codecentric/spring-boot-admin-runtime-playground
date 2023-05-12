@@ -7,4 +7,4 @@ mvn clean install
 # Build Docker Image
 docker build --tag health-simulator .
 # Install App
-helm install health-simulator deployment
+helm install health-simulator ../spring-boot-app-helmchart -f deployment/values.yaml

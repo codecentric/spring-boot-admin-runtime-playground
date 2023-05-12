@@ -1,41 +1,49 @@
 # Hello World
 
 ## Build App
-
-    mvn clean install
+```bash
+mvn clean install
+```
 
 ## Build Docker Image
-
-    docker build --tag hello-world .
+```bash
+docker build --tag hello-world .
+```
 
 ## Install App
-
-    helm install hello-world deployment
+```bash
+helm install hello-world ../spring-boot-app-helmchart -f deployment/values.yaml
+```
 
 ### Check deployment
-
-    kubectl get pods -o wide
-    kubectl get services -o wide
-    kubectl get ingress
+```bash
+kubectl get pods -o wide
+kubectl get services -o wide
+kubectl get ingress
+```
 
 ### Uninstall
-
-     helm uninstall hello-world
+```bash
+helm uninstall hello-world
+```
 
 ## Build & Install Script
-
-    chmod u+x buildAndInstall.sh
-    ./buildAndInstall.sh
+```bash
+chmod u+x buildAndInstall.sh
+./buildAndInstall.sh
+```
 
 ## URI
 
 - http://localhost/hello-world
 
 ## Access Actuator
-
-    kubectl get pods
-    kubectl port-forward <pod-name> 8081:8081
-
+```bash
+kubectl get pods
+```
+```bash
+kubectl port-forward <pod-name> 8081:8081
+```
 ### URI
 
 - http://localhost:8081/actuator

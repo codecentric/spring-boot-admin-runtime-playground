@@ -1,20 +1,6 @@
 name: hello-world
-namespace: default
 
 deployment:
   env:
     SERVER_SERVLET_CONTEXT_PATH: /hello-world
   image: hello-world
-  # not recommended for production
-  pullPolicy: Never
-  updateStrategy: RollingUpdate
-  maxSurge: 100%
-  maxUnavailable: 0%
-  replicas: 2
-  restartPolicy: Always
-  livenessProbe:
-    initialDelaySeconds: 10
-    timeoutSeconds: 10
-  readinessProbe:
-    initialDelaySeconds: 10
-    timeoutSeconds: 10

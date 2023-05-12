@@ -5,31 +5,37 @@ App to simulate changes in health status. Spring Boot Admin reports these in the
 You can change the number of replicas in [deployment/values.yaml](deployment/values.yaml). Note that calls to http://localhost/health-simulator will reach a random pod if the number of replicas is greater than 0. Calls to http://localhost/health-simulator/up ... change the status of a random pod.
 
 ## Build App
-
-    mvn clean install
+```bash
+mvn clean install
+```
 
 ## Build Docker Image
-
-    docker build --tag health-simulator .
+```bash
+docker build --tag health-simulator .
+```
 
 ## Install App
-
-    helm install health-simulator deployment
+```bash
+helm install health-simulator ../spring-boot-app-helmchart -f deployment/values.yaml
+```
 
 ### Check deployment
-
-    kubectl get pods -o wide
-    kubectl get services -o wide
-    kubectl get ingress
+```bash
+kubectl get pods -o wide
+kubectl get services -o wide
+kubectl get ingress
+```
 
 ### Uninstall
-
-     helm uninstall health-simulator
+```bash
+helm uninstall health-simulator
+```
 
 ## Build & Install Script
-
-    chmod u+x buildAndInstall.sh
-    ./buildAndInstall.sh
+```bash
+chmod u+x buildAndInstall.sh
+./buildAndInstall.sh
+```
 
 ## URI
 
@@ -45,10 +51,12 @@ You can change the number of replicas in [deployment/values.yaml](deployment/val
 - http://localhost/health-simulator/out_of_service
 
 ## Access Actuator
-
-    kubectl get pods
-    kubectl port-forward <pod-name> 8081:8081
-
+```bash
+kubectl get pods
+```    
+```bash
+kubectl port-forward <pod-name> 8081:8081
+```
 ### URI
 
 - http://localhost:8081/actuator
