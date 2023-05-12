@@ -22,4 +22,4 @@ https://doc.traefik.io/traefik/getting-started/quick-start-with-kubernetes/
 
 ## URI
 
-- http://localhost:8080
+- http://localhost:9090
