@@ -13,9 +13,9 @@ helm upgrade --install traefik .
 ```bash
 kubectl get pods -o wide
 kubectl get services -o wide
-kubectl get accounts
+kubectl get serviceaccounts
 kubectl get clusterrole
-kubectl get clusterrolebinding kubectl -o wide
+kubectl get clusterrolebinding -o wide
 ```
 
 ### Uninstall

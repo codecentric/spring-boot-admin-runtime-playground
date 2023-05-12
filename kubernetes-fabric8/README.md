@@ -17,14 +17,16 @@ This Readme will guide you through all setup steps for the infrastructure.
 - <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
 
 ### Change Kubernetes Context
-
-    kubectl config get-contexts
-    kubectl config use-context docker-desktop
+```bash
+kubectl config get-contexts
+kubectl config use-context docker-desktop
+```
 
 ## Install Helm
-
-    brew install helm
-    helm version
+```bash
+brew install helm
+helm version
+```
 
 ### Documentation
 
