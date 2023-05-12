@@ -20,6 +20,7 @@ https://doc.traefik.io/traefik/getting-started/quick-start-with-kubernetes/
 
      helm uninstall traefik
 
-## URI
+## Traefik Dashboard
 
 - http://localhost:9090
+- the dashboard will show that it is listening to 8080, as this is the internal port that will be mapped to 9090 in k8s
