@@ -30,8 +30,8 @@ spec:
             value: /{{ .Values.name }}
         {{- with .Values.deployment.env }}
         {{- range $env_var, $key := . }}
-        - name: {{ $env_var }}
-          value: "{{ $key }}"
+          - name: {{ $env_var }}
+            value: "{{ $key }}"
         {{- end }}
         {{- end }}
         ports:
