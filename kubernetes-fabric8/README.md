@@ -32,15 +32,16 @@ This Readme will guide you through all setup steps for the infrastructure.
 
 ## Install Traefik
 
-- [./traefik/README.md](./traefik/README.md)
+- [./helm-charts/traefik/README.md](./helm-charts/traefik/README.md)
 
 ## Build & Install Apps
 
-- [./hello-world/README.md](./hello-world/README.md)
-- [./spring-boot-admin/README.md](./spring-boot-admin/README.md)
-- [./health-simulator/README.md](./health-simulator/README.md)
+- [./apps/hello-world/README.md](./apps/hello-world/README.md)
+- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin/README.md)
+- [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Apps
-
-    chmod u+x uninstall.sh
-    ./uninstall.sh
+```bash
+chmod u+x uninstall.sh
+./uninstall.sh
+```   

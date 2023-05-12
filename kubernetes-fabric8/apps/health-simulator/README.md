@@ -16,7 +16,7 @@ docker build --tag health-simulator .
 
 ## Install App
 ```bash
-helm install health-simulator ../spring-boot-app-helmchart -f deployment/values.yaml
+helm install health-simulator ../../helm-charts/spring-boot-app -f deployment/values.yaml
 ```
 
 ### Check deployment

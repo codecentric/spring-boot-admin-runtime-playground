@@ -1,4 +1,4 @@
-# Spring Boot Admin
+# Hello World
 
 ## Build App
 ```bash
@@ -7,12 +7,12 @@ mvn clean install
 
 ## Build Docker Image
 ```bash
-docker build --tag spring-boot-admin .
+docker build --tag hello-world .
 ```
 
 ## Install App
 ```bash
-helm install spring-boot-admin deployment
+helm install hello-world ../../helm-charts/spring-boot-app -f deployment/values.yaml
 ```
 
 ### Check deployment
@@ -20,13 +20,11 @@ helm install spring-boot-admin deployment
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl get ingress
-kubectl get serviceaccount
-kubectl get role
-kubectl get rolebinding -o wide
 ```
+
 ### Uninstall
 ```bash
-helm uninstall spring-boot-admin
+helm uninstall hello-world
 ```
 
 ## Build & Install Script
@@ -37,15 +35,15 @@ chmod u+x buildAndInstall.sh
 
 ## URI
 
-- http://localhost/spring-boot-admin
+- http://localhost/hello-world
 
 ## Access Actuator
 ```bash
 kubectl get pods
 ```
 ```bash
-kubectl port-forward <pod-name> 9091:8081
+kubectl port-forward <pod-name> 8081:8081
 ```
 ### URI
 
-- http://localhost:9091/actuator
+- http://localhost:8081/actuator
