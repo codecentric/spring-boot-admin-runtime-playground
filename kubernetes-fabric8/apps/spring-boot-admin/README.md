@@ -1,16 +1,27 @@
 # Spring Boot Admin
 
-## Build App
+## Build & Install Script
+
+You can run the whole build and installation with the following script or follow the step by step guide below.
+
+```bash
+chmod u+x buildAndInstall.sh
+./buildAndInstall.sh
+```
+
+## Step-by-step build
+
+### Build App
 ```bash
 mvn clean install
 ```
 
-## Build Docker Image
+### Build Docker Image
 ```bash
 docker build --tag spring-boot-admin .
 ```
 
-## Install App
+### Install App
 ```bash
 helm install spring-boot-admin ../../helm-charts/spring-boot-admin
 ```
@@ -24,15 +35,10 @@ kubectl get serviceaccount
 kubectl get role
 kubectl get rolebinding -o wide
 ```
+
 ### Uninstall
 ```bash
 helm uninstall spring-boot-admin
-```
-
-## Build & Install Script
-```bash
-chmod u+x buildAndInstall.sh
-./buildAndInstall.sh
 ```
 
 ## URI

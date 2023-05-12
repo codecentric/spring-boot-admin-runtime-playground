@@ -1,16 +1,27 @@
 # Hello World
 
-## Build App
+## Build & Install Script
+
+You can run the whole build and installation with the following script or follow the step by step guide below.
+
+```bash
+chmod u+x buildAndInstall.sh
+./buildAndInstall.sh
+```
+
+## Step-by-step build
+
+### Build App
 ```bash
 mvn clean install
 ```
 
-## Build Docker Image
+### Build Docker Image
 ```bash
 docker build --tag hello-world .
 ```
 
-## Install App
+### Install App
 ```bash
 helm install hello-world ../../helm-charts/spring-boot-app -f deployment/values.yaml
 ```
@@ -25,12 +36,6 @@ kubectl get ingress
 ### Uninstall
 ```bash
 helm uninstall hello-world
-```
-
-## Build & Install Script
-```bash
-chmod u+x buildAndInstall.sh
-./buildAndInstall.sh
 ```
 
 ## URI
