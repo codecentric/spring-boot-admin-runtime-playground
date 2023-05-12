@@ -30,18 +30,45 @@ This Readme will guide you through all setup steps for the infrastructure.
 
 - <https://helm.sh/docs/intro/quickstart/>
 
-## Install Traefik
+## Install Everything
+You can run the whole build and installation for all apps with the following script or follow the step by step guide below.
+```bash
+chmod u+x buildAndInstallAll.sh
+./buildAndInstallAll.sh
+```
+
+http://localhost/spring-boot-admin
+
+## Step-by-step Installation
+
+### Install Traefik
 
 - [./helm-charts/traefik/README.md](./helm-charts/traefik/README.md)
 
-## Build & Install Apps
+### Build & Install Apps
 
 - [./apps/hello-world/README.md](./apps/hello-world/README.md)
 - [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
-## Uninstall Apps
+## Uninstall Everything
 ```bash
 chmod u+x uninstall.sh
 ./uninstall.sh
-```   
+```
+
+## Installing Other Spring Boot Apps
+
+You can install any Spring Boot App using the helm chart (your app must be available as docker image).
+
+```bash
+helm upgrade --install <your-app-name> helm-charts/spring-boot-app -f <path-to-your>/values.yaml
+```
+OR
+```bash
+helm upgrade --install <your-app-name> helm-charts/spring-boot-app --set name=<your-spring-app> --set deployment.image=<yourImage>
+```
+
+```bash
+helm uninstall <your-app-name>
+```

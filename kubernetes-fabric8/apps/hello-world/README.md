@@ -23,7 +23,7 @@ docker build --tag hello-world .
 
 ### Install App
 ```bash
-helm install hello-world ../../helm-charts/spring-boot-app -f deployment/values.yaml
+helm upgrade --install hello-world ../../helm-charts/spring-boot-app -f deployment/values.yaml
 ```
 
 ### Check deployment

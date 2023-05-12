@@ -25,11 +25,13 @@ spec:
       - name: {{ .Values.name }}
         image: {{ .Values.deployment.image }}
         imagePullPolicy: {{ .Values.deployment.pullPolicy }}
-        {{- with .Values.deployment.env }}
         env:
+          - name: SERVER_SERVLET_CONTEXT_PATH
+            value: /{{ .Values.name }}
+        {{- with .Values.deployment.env }}
         {{- range $env_var, $key := . }}
-          - name: {{ $env_var }}
-            value: "{{ $key }}"
+        - name: {{ $env_var }}
+          value: "{{ $key }}"
         {{- end }}
         {{- end }}
         ports:

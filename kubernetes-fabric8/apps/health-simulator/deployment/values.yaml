@@ -1,7 +1,5 @@
 name: health-simulator
 
 deployment:
-  env:
-    SERVER_SERVLET_CONTEXT_PATH: /health-simulator
   image: health-simulator
   replicas: 1

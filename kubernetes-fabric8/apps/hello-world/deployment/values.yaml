@@ -1,6 +1,4 @@
 name: hello-world
 
 deployment:
-  env:
-    SERVER_SERVLET_CONTEXT_PATH: /hello-world
   image: hello-world

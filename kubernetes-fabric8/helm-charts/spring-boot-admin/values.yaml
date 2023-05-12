@@ -3,7 +3,6 @@ namespace: default
 
 deployment:
   env:
-    SERVER_SERVLET_CONTEXT_PATH: /spring-boot-admin
     SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Kubernetes
   image: spring-boot-admin
   # not recommended for production

@@ -2,10 +2,8 @@ name: spring-boot-app-default
 namespace: default
 
 deployment:
-  env:
-    SERVER_SERVLET_CONTEXT_PATH: /app
   image: spring-boot-app-default
-  # not recommended for production
+  # do not pull image but use locally built image, not recommended for production
   pullPolicy: Never
   updateStrategy: RollingUpdate
   maxSurge: 100%

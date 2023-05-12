@@ -23,7 +23,7 @@ docker build --tag spring-boot-admin .
 
 ### Install App
 ```bash
-helm install spring-boot-admin ../../helm-charts/spring-boot-admin
+helm upgrade --install spring-boot-admin ../../helm-charts/spring-boot-admin
 ```
 
 ### Check deployment
