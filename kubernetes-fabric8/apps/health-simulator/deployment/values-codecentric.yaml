@@ -1,0 +1,6 @@
+name: health-simulator
+namespace: spring-boot-admin-demo
+
+deployment:
+  image: andreasfritzcodecentric/health-simulator:1.0.0
+  pullPolicy: Always
