@@ -3,8 +3,7 @@ namespace: default
 
 deployment:
   image: spring-boot-app-default
-  # do not pull image but use locally built image, not recommended for production
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
   updateStrategy: RollingUpdate
   maxSurge: 100%
   maxUnavailable: 0%
