@@ -2,8 +2,8 @@
 
 ### Build & Push Docker Image
 ```bash
-docker build --platform linux/amd64 -t andreasfritzcodecentric/health-simulator:1.0.0 .
-docker push andreasfritzcodecentric/health-simulator:1.0.0
+docker build --platform linux/amd64 -t andreasfritzcodecentric/health-simulator:1.0.1 .
+docker push andreasfritzcodecentric/health-simulator:1.0.1
 ```
 
 ### Install App

@@ -2,5 +2,5 @@ name: hello-world
 namespace: spring-boot-admin-demo
 
 deployment:
-  image: andreasfritzcodecentric/hello-world:1.0.1
+  image: andreasfritzcodecentric/hello-world:1.0.2
   pullPolicy: Always
