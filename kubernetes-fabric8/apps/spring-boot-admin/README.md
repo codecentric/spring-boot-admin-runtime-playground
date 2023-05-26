@@ -28,6 +28,7 @@ helm upgrade --install spring-boot-admin ../../helm-charts/spring-boot-admin
 
 ### Check deployment
 ```bash
+kubectl get deployments -o wide
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl get ingress

@@ -28,6 +28,7 @@ helm upgrade --install hello-world ../../helm-charts/spring-boot-app -f deployme
 
 ### Check deployment
 ```bash
+kubectl get deployments -o wide
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl get ingress

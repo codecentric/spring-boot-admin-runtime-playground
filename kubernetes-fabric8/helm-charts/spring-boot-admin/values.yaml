@@ -1,5 +1,6 @@
 name: spring-boot-admin
 namespace: default
+serviceAccountName: spring-boot-admin-account
 
 deployment:
   env:

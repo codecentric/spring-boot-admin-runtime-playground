@@ -9,5 +9,5 @@ roleRef:
   name: role-{{ .Values.name }}
 subjects:
 - kind: ServiceAccount
-  name: {{ .Values.name }}-account
+  name: {{ .Values.serviceAccountName }}
   namespace: {{ .Values.namespace }}

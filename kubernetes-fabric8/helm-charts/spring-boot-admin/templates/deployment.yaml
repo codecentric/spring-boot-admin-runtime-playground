@@ -20,7 +20,7 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      serviceAccountName: {{ .Values.name }}-account
+      serviceAccountName: {{ .Values.serviceAccountName }}
       restartPolicy: {{ .Values.deployment.restartPolicy }}
       containers:
       - name: {{ .Values.name }}

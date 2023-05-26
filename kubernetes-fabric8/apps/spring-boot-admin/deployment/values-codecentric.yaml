@@ -1,0 +1,7 @@
+name: spring-boot-admin
+namespace: spring-boot-admin-demo
+serviceAccountName: default
+
+deployment:
+  image: andreasfritzcodecentric/spring-boot-admin:1.0.1
+  pullPolicy: Always

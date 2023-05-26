@@ -32,6 +32,7 @@ helm upgrade --install health-simulator ../../helm-charts/spring-boot-app -f dep
 
 ### Check deployment
 ```bash
+kubectl get deployments -o wide
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl get ingress
