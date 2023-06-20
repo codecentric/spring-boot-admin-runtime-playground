@@ -1,0 +1,50 @@
+server:
+  port: 8080
+spring:
+  application: # Application-Info for the Info-Actuator and Nacos
+    name: "@pom.artifactId@"
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR:127.0.0.1:8848}
+        metadata:
+          spring-boot-admin: true # Used as filter in Spring Boot Admin
+management: # Actuator Configuration
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    env: # Environment-Actuator
+      show-values: always
+    configprops: # Configuration-Actuator
+      show-values: always
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+    git:
+      enabled: true
+info: # Application-Info for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@pom.parent.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@pom.parent.version@"
+logging: # Logging-File for the Logfile-Actuator
+  file:
+    name: "hello-world.log"
