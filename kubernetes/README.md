@@ -39,7 +39,9 @@ chmod u+x buildAndInstallAll.sh
 ./buildAndInstallAll.sh
 ```
 
-http://localhost/spring-boot-admin
+http://localhost/spring-boot-admin-kubernetes
+
+http://localhost/spring-boot-admin-fabric8
 
 ## Step-by-step Installation
 
