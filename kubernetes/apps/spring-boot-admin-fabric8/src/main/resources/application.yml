@@ -13,11 +13,7 @@ spring:
       discovery: # Filter discovery to tagged services
         instances-metadata:
           spring-boot-admin: true
-# Service port name must be http or https or ...
-#  cloud:
-#    kubernetes:
-#      discovery:
-#        primary-port-name: http
+
 management: # Actuator Configuration
   server:
     port: 8081

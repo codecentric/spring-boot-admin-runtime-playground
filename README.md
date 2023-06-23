@@ -4,6 +4,6 @@
 Not intended for production usage, but to reproduce issues or to try out things.
 
 ### Kubernetes
-- [kubernetes-fabric8](/kubernetes-fabric8)
+- [kubernetes](/kubernetes)
 
 

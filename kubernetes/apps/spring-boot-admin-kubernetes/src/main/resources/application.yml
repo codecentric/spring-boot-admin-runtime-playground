@@ -1,0 +1,64 @@
+server:
+  port: 9090
+spring:
+  application: # Application-Infos for the Info-Actuator
+    name: "@pom.artifactId@"
+  # Spring Boot Admin
+  boot:
+    admin:
+      ui:
+        # public-url: ${SPRING_BOOT_ADMIN_UI_PUBLIC_URL:http://localhost:8080}
+        title: ${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}
+        brand: <img src="assets/img/icon-spring-boot-admin.svg"><span>${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}</span>
+  cloud:
+    kubernetes:
+      discovery:
+        metadata:
+          ports:
+            management: 9091
+        serviceLabels:
+          spring-boot: true
+
+management: # Actuator Configuration
+  server:
+    port: 9091
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    env: # Environment-Actuator
+      show-values: always
+    configprops: # Configuration-Actuator
+      show-values: always
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+    git:
+      enabled: true
+info: # Application-Infos for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@pom.parent.version@"
+  spring-boot-admin: "@spring-boot-admin.version@"
+  spring-cloud: "@spring-cloud.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@pom.parent.version@"
+    spring-boot-admin: "@spring-boot-admin.version@"
+    spring-cloud: "@spring-cloud.version@"
+logging: # Logging-File for the Logfile-Actuator
+  file:
+    name: "spring-boot-admin.log"

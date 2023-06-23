@@ -1,0 +1,9 @@
+name: spring-boot-admin-kubernetes
+namespace: default
+
+deployment:
+  server:
+    port: 9090
+  management:
+    port: 9091
+  image: spring-boot-admin:kubernetes
