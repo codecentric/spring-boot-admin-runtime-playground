@@ -18,12 +18,12 @@ mvn clean install
 
 ### Build Docker Image
 ```bash
-docker build --tag spring-boot-admin .
+docker build --tag spring-boot-admin:kubernetes .
 ```
 
 ### Install App
 ```bash
-helm upgrade --install spring-boot-admin ../../helm-charts/spring-boot-admin
+helm upgrade --install spring-boot-admin-kubernetes ../../helm-charts/spring-boot-admin -f deployment/values.yml
 ```
 
 ### Check deployment
@@ -38,19 +38,19 @@ kubectl get rolebinding -o wide
 
 ### Uninstall
 ```bash
-helm uninstall spring-boot-admin
+helm uninstall spring-boot-admin-kubernetes
 ```
 
 ## URI
 
-- http://localhost/spring-boot-admin
+- http://localhost/spring-boot-admin-kubernetes
 
 ## Access Actuator
 ```bash
 kubectl get pods
 ```
 ```bash
-kubectl port-forward <pod-name> 9091:8081
+kubectl port-forward <pod-name> 9091:9091
 ```
 ### URI
 

@@ -14,9 +14,6 @@ spring:
         instances-metadata:
           spring-boot-admin: true
 
-#    kubernetes:
-#      discovery:
-#        primary-port-name: http
 management: # Actuator Configuration
   server:
     port: 8081
