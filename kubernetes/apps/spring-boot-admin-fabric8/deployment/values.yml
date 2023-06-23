@@ -1,0 +1,5 @@
+name: spring-boot-admin-fabric8
+namespace: default
+
+deployment:
+  image: spring-boot-admin:fabric8

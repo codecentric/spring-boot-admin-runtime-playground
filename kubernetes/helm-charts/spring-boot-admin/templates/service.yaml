@@ -11,13 +11,13 @@ metadata:
     spring-boot-admin: "true"
 spec:
   ports:
-    - port: 8080
+    - port: {{ .Values.deployment.server.port }}
       targetPort: http
       protocol: TCP
       # Name must be http or https
       # Alternative: configure spring.cloud.kubernetes.discovery.primary-port-name
       name: http
-    - port: 8081
+    - port: {{ .Values.deployment.management.port }}
       targetPort: management
       protocol: TCP
       name: management

@@ -10,18 +10,9 @@ spring:
         # public-url: ${SPRING_BOOT_ADMIN_UI_PUBLIC_URL:http://localhost:8080}
         title: ${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}
         brand: <img src="assets/img/icon-spring-boot-admin.svg"><span>${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}</span>
-      #discovery: # Filter discovery to tagged services
-      #  instances-metadata:
-      #    spring-boot-admin: true
-
-  cloud:
-    kubernetes:
-      discovery:
-        metadata:
-          ports:
-            management: 8081
-        serviceLabels:
-          spring-boot: true
+      discovery: # Filter discovery to tagged services
+        instances-metadata:
+          spring-boot-admin: true
 
 #    kubernetes:
 #      discovery:

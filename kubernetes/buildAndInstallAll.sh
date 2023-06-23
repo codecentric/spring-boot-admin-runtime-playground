@@ -2,7 +2,11 @@
 
 helm upgrade --install traefik helm-charts/traefik
 
-cd apps/spring-boot-admin
+cd apps/spring-boot-admin-kubernetes
+./buildAndInstall.sh
+cd ../..
+
+cd apps/spring-boot-admin-fabric8
 ./buildAndInstall.sh
 cd ../..
 
