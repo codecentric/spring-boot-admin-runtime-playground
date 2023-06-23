@@ -56,8 +56,8 @@ http://localhost/spring-boot-admin-fabric8
 ### Build & Install Apps
 
 - [./apps/hello-world/README.md](./apps/hello-world/README.md)
-- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin-kubernetes/README.md)
-- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin-fabric8/README.md)
+- [./apps/spring-boot-admin-kubernetes/README.md](./apps/spring-boot-admin-kubernetes/README.md)
+- [./apps/spring-boot-admin-fabric8/README.md](./apps/spring-boot-admin-fabric8/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Everything
