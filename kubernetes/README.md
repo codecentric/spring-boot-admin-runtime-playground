@@ -2,6 +2,10 @@
 
 Allows to run Spring Boot Admin and two sample apps (hello world, health simulator) in kubernetes. 
 
+There are 2 instances of Spring Boot Admin available. Both use the discovery mechanism to find the apps to monitor, 
+there is no self registration used. One SBA is using the spring cloud kubernetes-client and the other one
+the spring cloud kubernetes-fabric8. There are small differences in the configuration between these two versions.
+
 This Readme will guide you through all setup steps for the infrastructure.
 
 ## Enable Kubernetes in Docker Desktop
@@ -52,7 +56,8 @@ http://localhost/spring-boot-admin-fabric8
 ### Build & Install Apps
 
 - [./apps/hello-world/README.md](./apps/hello-world/README.md)
-- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin/README.md)
+- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin-kubernetes/README.md)
+- [./apps/spring-boot-admin/README.md](./apps/spring-boot-admin-fabric8/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Everything
