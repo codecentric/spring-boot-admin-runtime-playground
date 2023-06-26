@@ -1,0 +1,47 @@
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.3-slim
+    container_name: nacos-server
+    environment:
+      - MODE=standalone
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8848/nacos" ]
+      interval: 10s
+      start_period: 10s
+  health-simulator:
+    container_name: health-simulator-nacos
+    image: health-simulator-nacos
+    environment:
+      - NACOS_SERVER_ADDR=nacos-server
+    ports:
+      - "8280:8080"
+      - "8281:8081"
+    depends_on:
+      nacos:
+        condition: service_healthy
+  hello-world:
+    container_name: hello-world-nacos
+    image: hello-world-nacos
+    environment:
+      - NACOS_SERVER_ADDR=nacos-server
+    ports:
+      - "8180:8080"
+      - "8181:8081"
+      - "5005:5005"
+    depends_on:
+      nacos:
+        condition: service_healthy
+  spring-boot-admin:
+    container_name: spring-boot-admin-nacos
+    image: spring-boot-admin-nacos
+    environment:
+      - NACOS_SERVER_ADDR=nacos-server
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      nacos:
+        condition: service_healthy

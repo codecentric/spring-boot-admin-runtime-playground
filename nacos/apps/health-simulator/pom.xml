@@ -7,15 +7,15 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.1.1</version>
+    <version>3.0.7</version>
   </parent>
 
   <groupId>de.codecentric</groupId>
-  <artifactId>hello-world</artifactId>
+  <artifactId>health-simulator-nacos</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <version>1.0.0-SNAPSHOT</version>
-  <description>Hello World</description>
+  <description>Simulate Health Checks</description>
 
   <properties>
     <java.version>17</java.version>
@@ -33,6 +33,20 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+
+    <!-- Nacos Discovery -->
+    <dependency>
+      <groupId>com.alibaba.cloud</groupId>
+      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+      <version>2022.0.0.0-RC2</version>
+    </dependency>
+
+    <!-- Supporting -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -46,13 +60,13 @@
             <id>repackage</id>
             <goals>
               <goal>repackage</goal>
-              <!-- Build-Infos for Info-Actuator -->
+              <!-- Build-Info for Info-Actuator -->
               <goal>build-info</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
-      <!-- GIT-Infos for Info-Actuator -->
+      <!-- GIT-Info for Info-Actuator -->
       <plugin>
         <groupId>io.github.git-commit-id</groupId>
         <artifactId>git-commit-id-maven-plugin</artifactId>
