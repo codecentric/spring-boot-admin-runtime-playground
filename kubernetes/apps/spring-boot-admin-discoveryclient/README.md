@@ -1,6 +1,10 @@
 # Spring Boot Admin
 
-This is a Spring Boot Admin instance using spring-cloud-starter-kubernetes-fabric8 for service discovery. 
+This is a Spring Boot Admin instance using spring-cloud-starter-kubernetes-discoveryclient for service discovery.
+Therefore it needs a running spring-cloud-kubernetes-discoveryserver.
+For this reason, the SBA server does not need kubernetes api permissions on kubernetes itself and uses the 
+spring-boot-app helmchart.
+
 
 ## Build & Install Script
 
@@ -20,12 +24,12 @@ mvn clean install
 
 ### Build Docker Image
 ```bash
-docker build --tag spring-boot-admin:fabric8 .
+docker build --tag spring-boot-admin:discocli .
 ```
 
 ### Install App
 ```bash
-helm upgrade --install spring-boot-admin-fabric8 ../../helm-charts/spring-boot-admin -f deployment/values.yml
+helm upgrade --install spring-boot-admin-discocli ../../helm-charts/spring-boot-admin -f deployment/values.yml
 ```
 
 ### Check deployment
@@ -37,22 +41,22 @@ kubectl get serviceaccount
 kubectl get role
 kubectl get rolebinding -o wide
 ```
-
+TODO role stuff not needed
 ### Uninstall
 ```bash
-helm uninstall spring-boot-admin-fabric8
+helm uninstall spring-boot-admin-kubernetes
 ```
 
 ## URI
 
-- http://localhost/spring-boot-admin-fabric8
+- http://localhost/spring-boot-admin-kubernetes
 
 ## Access Actuator
 ```bash
 kubectl get pods
 ```
 ```bash
-kubectl port-forward <pod-name> 9091:8081
+kubectl port-forward <pod-name> 9091:9071
 ```
 ### URI
 

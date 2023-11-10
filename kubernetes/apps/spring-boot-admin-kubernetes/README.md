@@ -1,5 +1,7 @@
 # Spring Boot Admin
 
+This is a Spring Boot Admin instance using spring-cloud-starter-kubernetes-client for service discovery.
+
 ## Build & Install Script
 
 You can run the whole build and installation with the following script or follow the step by step guide below.
