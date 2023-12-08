@@ -2,6 +2,8 @@ name: spring-boot-admin-kubernetes
 namespace: default
 
 deployment:
+  env:
+    SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Kubernetes Client
   server:
     port: 9090
   management:
