@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 8080
 spring:
   application: # Application-Infos for the Info-Actuator
     name: "@pom.artifactId@"
@@ -20,7 +20,7 @@ spring:
 #          spring-boot: true
         all-namespaces: true
         include-not-ready-addresses: true
-        discovery-server-url: "spring-cloud-kubernetes-discoveryserver:8761"
+        discovery-server-url: "http://spring-cloud-kubernetes-discoveryserver"
 # for local development (starting directly from IDE), enable port forwarding for discovery server and use the following
 # three lines instead of the one above
 #        discovery-server-url: "localhost:8761"
@@ -28,7 +28,7 @@ spring:
 #    cloud-platform: KUBERNETES
 management: # Actuator Configuration
   server:
-    port: 9091
+    port: 8081
   endpoints:
     web:
       exposure:
