@@ -6,6 +6,9 @@ There are 2 instances of Spring Boot Admin available. Both use the discovery mec
 there is no self registration used. One SBA is using the spring cloud kubernetes-client and the other one
 the spring cloud kubernetes-fabric8. There are small differences in the configuration between these two versions.
 
+There is also a version using the spring cloud kubernetes discovery server to get all running services instead of using
+kubernetes discovery directly.
+
 This Readme will guide you through all setup steps for the infrastructure.
 
 ## Enable Kubernetes in Docker Desktop

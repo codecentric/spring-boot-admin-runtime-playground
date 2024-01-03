@@ -18,10 +18,14 @@ spring:
 #            management: 9091
 #        serviceLabels:
 #          spring-boot: true
-# TODO how does it find the discovery server?
         all-namespaces: true
         include-not-ready-addresses: true
-
+        discovery-server-url: "spring-cloud-kubernetes-discoveryserver:8761"
+# for local development (starting directly from IDE), enable port forwarding for discovery server and use the following
+# three lines instead of the one above
+#        discovery-server-url: "localhost:8761"
+#  main:
+#    cloud-platform: KUBERNETES
 management: # Actuator Configuration
   server:
     port: 9091

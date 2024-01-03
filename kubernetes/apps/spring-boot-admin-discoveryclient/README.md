@@ -28,8 +28,11 @@ docker build --tag spring-boot-admin:discocli .
 ```
 
 ### Install App
+We use the standard "app" helm chart here and NOT the "admin" helm chart as we do not need the k8s api access with this
+setup. The discoveryserver has the permissions and is providing the apps via rest api.
+
 ```bash
-helm upgrade --install spring-boot-admin-discocli ../../helm-charts/spring-boot-admin -f deployment/values.yml
+helm upgrade --install spring-boot-admin-discocli ../../helm-charts/spring-boot-app -f deployment/values.yml
 ```
 
 ### Check deployment
@@ -37,14 +40,11 @@ helm upgrade --install spring-boot-admin-discocli ../../helm-charts/spring-boot-
 kubectl get pods -o wide
 kubectl get services -o wide
 kubectl get ingress
-kubectl get serviceaccount
-kubectl get role
-kubectl get rolebinding -o wide
 ```
-TODO role stuff not needed
+
 ### Uninstall
 ```bash
-helm uninstall spring-boot-admin-kubernetes
+helm uninstall spring-boot-admin-discocli
 ```
 
 ## URI

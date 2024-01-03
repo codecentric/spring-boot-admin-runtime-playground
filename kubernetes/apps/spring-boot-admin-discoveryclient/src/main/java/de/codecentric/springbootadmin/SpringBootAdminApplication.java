@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableAdminServer
-//@EnableDiscoveryClient TODO do we need this or is this handled by admin already?
 public class SpringBootAdminApplication {
 
   public static void main(String... args) {
