@@ -45,7 +45,7 @@ helm uninstall spring-boot-admin-fabric8
 
 ## URI
 
-- http://localhost/spring-boot-admin-fabric8
+- http://localhost/spring-boot-admin-fabric8 (requires [traefik](../../helm-charts/traefik/README.md) to be running)
 
 ## Access Actuator
 ```bash

@@ -49,7 +49,7 @@ helm uninstall spring-boot-admin-discocli
 
 ## URI
 
-- http://localhost/spring-boot-admin-kubernetes
+- http://localhost/spring-boot-admin-discocli (requires [traefik](../../helm-charts/traefik/README.md) to be running)
 
 ## Access Actuator
 ```bash
