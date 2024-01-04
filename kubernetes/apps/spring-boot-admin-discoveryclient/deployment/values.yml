@@ -1,0 +1,9 @@
+name: spring-boot-admin-discoveryclient
+namespace: default
+
+deployment:
+  server:
+    port: 8080
+  management:
+    port: 8081
+  image: spring-boot-admin:discocli

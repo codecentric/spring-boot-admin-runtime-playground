@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart for Spring Cloud Kubernetes Discovery Server
+name: spring-cloud-kubernetes-discoveryserver
+version: 0.0.0

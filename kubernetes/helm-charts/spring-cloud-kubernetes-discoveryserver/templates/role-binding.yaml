@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app: spring-cloud-kubernetes-discoveryserver
+  name: spring-cloud-kubernetes-discoveryserver:view
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: namespace-reader
+subjects:
+  - kind: ServiceAccount
+    name: spring-cloud-kubernetes-discoveryserver

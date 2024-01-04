@@ -1,0 +1,17 @@
+name: spring-cloud-kubernetes-discoveryserver
+namespace: default
+
+deployment:
+  image: springcloud/spring-cloud-kubernetes-discoveryserver:3.1.0
+  pullPolicy: IfNotPresent
+  updateStrategy: RollingUpdate
+  maxSurge: 100%
+  maxUnavailable: 0%
+  replicas: 1
+  restartPolicy: Always
+  livenessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 10
+  readinessProbe:
+    initialDelaySeconds: 10
+    timeoutSeconds: 10

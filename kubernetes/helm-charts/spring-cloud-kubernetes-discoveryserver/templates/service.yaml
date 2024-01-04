@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      # Name must be http or https
+      # Alternative: configure spring.cloud.kubernetes.discovery.primary-port-name
+      name: http
+  selector:
+    app: {{ .Values.name }}

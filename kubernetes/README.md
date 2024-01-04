@@ -6,6 +6,9 @@ There are 2 instances of Spring Boot Admin available. Both use the discovery mec
 there is no self registration used. One SBA is using the spring cloud kubernetes-client and the other one
 the spring cloud kubernetes-fabric8. There are small differences in the configuration between these two versions.
 
+There is also a version using the spring cloud kubernetes discovery server to get all running services instead of using
+kubernetes discovery directly.
+
 This Readme will guide you through all setup steps for the infrastructure.
 
 ## Enable Kubernetes in Docker Desktop
@@ -37,7 +40,7 @@ helm version
 - <https://helm.sh/docs/intro/quickstart/>
 
 ## Install Everything
-You can run the whole build and installation for all apps with the following script or follow the step by step guide below.
+You can run the whole build and installation for all apps with the following script or follow the step-by-step guide below.
 ```bash
 chmod u+x buildAndInstallAll.sh
 ./buildAndInstallAll.sh
@@ -46,6 +49,8 @@ chmod u+x buildAndInstallAll.sh
 http://localhost/spring-boot-admin-kubernetes
 
 http://localhost/spring-boot-admin-fabric8
+
+http://localhost/spring-boot-admin-discoveryclient
 
 ## Step-by-step Installation
 
@@ -58,6 +63,7 @@ http://localhost/spring-boot-admin-fabric8
 - [./apps/hello-world/README.md](./apps/hello-world/README.md)
 - [./apps/spring-boot-admin-kubernetes/README.md](./apps/spring-boot-admin-kubernetes/README.md)
 - [./apps/spring-boot-admin-fabric8/README.md](./apps/spring-boot-admin-fabric8/README.md)
+- [./apps/spring-boot-admin-discoveryclient/README.md](./apps/spring-boot-admin-discoveryclient/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Everything
