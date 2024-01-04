@@ -12,7 +12,7 @@ spring:
         brand: <img src="assets/img/icon-spring-boot-admin.svg"><span>${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}</span>
       discovery: # Filter discovery to tagged services
         instances-metadata:
-          spring-boot-admin: true
+          spring-boot-admin: true # is added as annotation in service.yaml in helm chart
 
 management: # Actuator Configuration
   server:

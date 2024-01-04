@@ -7,23 +7,20 @@ spring:
   boot:
     admin:
       ui:
-        # public-url: ${SPRING_BOOT_ADMIN_UI_PUBLIC_URL:http://localhost:8080}
         title: ${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}
         brand: <img src="assets/img/icon-spring-boot-admin.svg"><span>${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}</span>
+      discovery: # Filter discovery to tagged services
+        instances-metadata:
+          spring-boot-admin: true # is added as annotation in service.yaml in helm chart
   cloud:
     kubernetes:
       discovery:
-#        metadata:
-#          ports:
-#            management: 9091
-#        serviceLabels:
-#          spring-boot: true
         all-namespaces: true
         include-not-ready-addresses: true
         discovery-server-url: "http://spring-cloud-kubernetes-discoveryserver"
 # for local development (starting directly from IDE), enable port forwarding for discovery server and use the following
 # three lines instead of the one above
-#        discovery-server-url: "localhost:8761"
+#        discovery-server-url: "http://localhost:8761"
 #  main:
 #    cloud-platform: KUBERNETES
 management: # Actuator Configuration

@@ -6,7 +6,7 @@ You can change the number of replicas in [deployment/values.yaml](deployment/val
 
 ## Build & Install Script
 
-You can run the whole build and installation with the following script or follow the step by step guide below.
+You can run the whole build and installation with the following script or follow the step-by-step guide below.
 
 ```bash
 chmod u+x buildAndInstall.sh

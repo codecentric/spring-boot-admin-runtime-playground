@@ -40,7 +40,7 @@ helm version
 - <https://helm.sh/docs/intro/quickstart/>
 
 ## Install Everything
-You can run the whole build and installation for all apps with the following script or follow the step by step guide below.
+You can run the whole build and installation for all apps with the following script or follow the step-by-step guide below.
 ```bash
 chmod u+x buildAndInstallAll.sh
 ./buildAndInstallAll.sh
@@ -49,6 +49,8 @@ chmod u+x buildAndInstallAll.sh
 http://localhost/spring-boot-admin-kubernetes
 
 http://localhost/spring-boot-admin-fabric8
+
+http://localhost/spring-boot-admin-discoveryclient
 
 ## Step-by-step Installation
 
@@ -61,6 +63,7 @@ http://localhost/spring-boot-admin-fabric8
 - [./apps/hello-world/README.md](./apps/hello-world/README.md)
 - [./apps/spring-boot-admin-kubernetes/README.md](./apps/spring-boot-admin-kubernetes/README.md)
 - [./apps/spring-boot-admin-fabric8/README.md](./apps/spring-boot-admin-fabric8/README.md)
+- [./apps/spring-boot-admin-discoveryclient/README.md](./apps/spring-boot-admin-fabric8/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Everything

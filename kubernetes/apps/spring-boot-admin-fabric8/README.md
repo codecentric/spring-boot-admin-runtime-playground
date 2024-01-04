@@ -4,7 +4,7 @@ This is a Spring Boot Admin instance using spring-cloud-starter-kubernetes-fabri
 
 ## Build & Install Script
 
-You can run the whole build and installation with the following script or follow the step by step guide below.
+You can run the whole build and installation with the following script or follow the step-by-step guide below.
 
 ```bash
 chmod u+x buildAndInstall.sh

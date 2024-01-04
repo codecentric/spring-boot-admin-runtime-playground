@@ -6,6 +6,13 @@ For this reason, the SBA server does not need kubernetes api permissions on kube
 spring-boot-app helmchart.
 
 
+TODO does not add new services that are started after this one, seems is no Watch like in the other discovery clients. 
+This also means that it does not add itself to the list of services. 
+
+
+Make sure [discoveryserver](../../helm-charts/spring-cloud-kubernetes-discoveryserver/README.md) is running before deploying this app.
+
+
 ## Build & Install Script
 
 You can run the whole build and installation with the following script or follow the step-by-step guide below.
@@ -32,7 +39,7 @@ We use the standard "app" helm chart here and NOT the "admin" helm chart as we d
 setup. The discoveryserver has the permissions and is providing the apps via rest api.
 
 ```bash
-helm upgrade --install spring-boot-admin-discocli ../../helm-charts/spring-boot-app -f deployment/values.yml
+helm upgrade --install spring-boot-admin-discoveryclient ../../helm-charts/spring-boot-app -f deployment/values.yml
 ```
 
 ### Check deployment
@@ -44,12 +51,12 @@ kubectl get ingress
 
 ### Uninstall
 ```bash
-helm uninstall spring-boot-admin-discocli
+helm uninstall spring-boot-admin-discoveryclient
 ```
 
 ## URI
 
-- http://localhost/spring-boot-admin-discocli (requires [traefik](../../helm-charts/traefik/README.md) to be running)
+- http://localhost/spring-boot-admin-discoveryclient (requires [traefik](../../helm-charts/traefik/README.md) to be running)
 
 ## Access Actuator
 ```bash

@@ -1,4 +1,4 @@
-name: spring-boot-admin-discocli
+name: spring-boot-admin-discoveryclient
 namespace: default
 
 deployment:
