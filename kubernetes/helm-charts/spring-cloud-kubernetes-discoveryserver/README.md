@@ -28,7 +28,7 @@ helm uninstall spring-cloud-kubernetes-discoveryserver
 kubectl get pods
 ```
 ```bash
-kubectl port-forward <pod-name> 8761:8761
+kubectl port-forward service/spring-cloud-kubernetes-discoveryserver 8761:80
 ```
 ### URI
 
