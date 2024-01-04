@@ -23,13 +23,12 @@ kubectl get rolebinding -o wide
 helm uninstall spring-cloud-kubernetes-discoveryserver
 ```
 
-## Access Actuator
-```bash
-kubectl get pods
-```
+## Access Endpoints or Actuator
+
 ```bash
 kubectl port-forward service/spring-cloud-kubernetes-discoveryserver 8761:80
 ```
+
 ### URI
 
 - http://localhost:8761/apps
