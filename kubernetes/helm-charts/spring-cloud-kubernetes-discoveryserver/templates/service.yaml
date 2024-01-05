@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
+    spring-boot: "true"
+  # Filter discovery to tagged services
+  annotations:
+    spring-boot-admin: "true"
 spec:
   ports:
     - port: 80
