@@ -15,6 +15,7 @@ management: # Actuator Configuration
       show-details: always
       probes:
         enabled: true
+        add-additional-paths: true
       status:
         order: DOWN,OUT_OF_SERVICE,UNKNOWN,UP
     env: # Environment-Actuator

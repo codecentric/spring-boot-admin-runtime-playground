@@ -35,6 +35,7 @@ management: # Actuator Configuration
       show-details: always
       probes:
         enabled: true
+        add-additional-paths: true
     env: # Environment-Actuator
       show-values: always
     configprops: # Configuration-Actuator

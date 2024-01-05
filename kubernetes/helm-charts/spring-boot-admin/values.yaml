@@ -5,7 +5,7 @@ deployment:
   env:
     SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Kubernetes
   image: spring-boot-admin
-  # not recommended for production
+  # do not pull image but use locally built image, not recommended for production
   pullPolicy: Never
   updateStrategy: RollingUpdate
   maxSurge: 100%
@@ -22,4 +22,3 @@ deployment:
     port: 8080
   management:
     port: 8081
-
