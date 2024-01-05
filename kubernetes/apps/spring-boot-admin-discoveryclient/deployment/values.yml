@@ -2,6 +2,8 @@ name: spring-boot-admin-discoveryclient
 namespace: default
 
 deployment:
+  env:
+    SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Discovery Client
   server:
     port: 8080
   management:

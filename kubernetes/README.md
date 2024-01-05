@@ -2,12 +2,7 @@
 
 Allows to run Spring Boot Admin and two sample apps (hello world, health simulator) in kubernetes. 
 
-There are 2 instances of Spring Boot Admin available. Both use the discovery mechanism to find the apps to monitor, 
-there is no self registration used. One SBA is using the spring cloud kubernetes-client and the other one
-the spring cloud kubernetes-fabric8. There are small differences in the configuration between these two versions.
-
-There is also a version using the spring cloud kubernetes discovery server to get all running services instead of using
-kubernetes discovery directly.
+There are 3 instances of Spring Boot Admin available. All three use the discovery mechanism to find the apps to monitor. There is no self registration used. One SBA is using the spring cloud kubernetes-client, the second one the spring cloud kubernetes-fabric8 and the third one is using the spring cloud kubernetes discovery server to get all running services instead of using kubernetes discovery directly.
 
 This Readme will guide you through all setup steps for the infrastructure.
 
