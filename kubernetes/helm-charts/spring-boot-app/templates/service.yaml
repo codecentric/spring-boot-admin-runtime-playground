@@ -5,10 +5,9 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: {{ .Values.name }}
-    spring-boot: "true"
-  # Filter discovery to tagged services
+    spring-boot: "true" # used by kubernetes java client to filter directly in discovery client
   annotations:
-    spring-boot-admin: "true"
+    spring-boot-admin: "true" # used by SBA server to filter services (e.g. when using fabric8 client)
 spec:
   ports:
     - port: 8080
