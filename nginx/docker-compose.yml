@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8888:80"
+    volumes:
+      - ./apps/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+
+  hello-world:
+    container_name: hello-world-nginx
+    image: hello-world-nginx
+
+  spring-boot-admin:
+    container_name: spring-boot-admin-nginx
+    image: spring-boot-admin-nginx
+
