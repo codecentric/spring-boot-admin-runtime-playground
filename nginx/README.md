@@ -6,6 +6,8 @@ Proxy is running at `localhost:8888` and different paths lead to different appli
 - http://localhost:8888/hello/ -> calls hello-world app, not be directly reachable
 - http://localhost:8888/admin/ -> calls spring-boot-admin app, not be directly reachable
 
+![img.png](img.png)
+
 ## Prerequisites
 
 - Java
