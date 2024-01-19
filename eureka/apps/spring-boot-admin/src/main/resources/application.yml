@@ -1,0 +1,58 @@
+server:
+  port: 8080
+spring:
+  application: # Application-Info for the Info-Actuator
+    name: "@pom.artifactId@"
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+management: # Actuator Configuration
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    env: # Environment-Actuator
+      show-values: always
+    configprops: # Configuration-Actuator
+      show-values: always
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+    git:
+      enabled: true
+info: # Application-Info for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@pom.parent.version@"
+  spring-boot-admin: "@spring-boot-admin.version@"
+  spring-cloud: "@spring-cloud.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@pom.parent.version@"
+    spring-boot-admin: "@spring-boot-admin.version@"
+    spring-cloud: "@spring-cloud.version@"
+logging: # Logging-File for the Logfile-Actuator
+  file:
+    name: "spring-boot-admin.log"
