@@ -16,8 +16,9 @@ You can run the whole build and start all apps in docker containers with the fol
 chmod u+x buildAndRunAll.sh
 ./buildAndRunAll.sh
 ```
+Eureka UI: http://localhost:8761/
 
-http://localhost:8080/
+Admin UI: http://localhost:8080/
 
 ## Stop Everything
 ```bash
