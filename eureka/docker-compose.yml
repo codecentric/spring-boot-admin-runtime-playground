@@ -1,0 +1,28 @@
+services:
+  eureka:
+    image: springcloud/eureka
+    container_name: eureka
+    ports:
+      - "8761:8761"
+    environment:
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - EUREKA_SERVICE_URL=http://eureka:8761
+
+  hello-world:
+    container_name: hello-world-eureka
+    image: hello-world-eureka
+    environment:
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+    ports:
+      - "8180:8080"
+      - "8181:8081"
+
+  spring-boot-admin:
+    container_name: spring-boot-admin-eureka
+    image: spring-boot-admin-eureka
+    environment:
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - EUREKA_SERVICE_URL=http://eureka:8761
+    ports:
+      - "8080:8080"
+      - "8081:8081"
