@@ -26,9 +26,9 @@ management: # Actuator Configuration
       probes:
         enabled: true
     env: # Environment-Actuator
-      show-values: always
+      show-values: always # caution: can reveal passwords
     configprops: # Configuration-Actuator
-      show-values: always
+      show-values: always # caution: can reveal passwords
   info: # Info-Actuator
     java:
       enabled: true
