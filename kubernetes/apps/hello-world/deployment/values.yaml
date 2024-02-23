@@ -2,3 +2,4 @@ name: hello-world
 
 deployment:
   image: hello-world
+  replicas: 3
