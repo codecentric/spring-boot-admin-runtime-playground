@@ -57,6 +57,8 @@ helm uninstall spring-boot-admin-discoveryclient
 ## URI
 
 - http://localhost/spring-boot-admin-discoveryclient (requires [traefik](../../helm-charts/traefik/README.md) to be running)
+- http://localhost/spring-boot-admin-discoveryclient/discovery/services
+- http://localhost/spring-boot-admin-discoveryclient/discovery/instances/hello-world
 
 ## Access Actuator
 ```bash
