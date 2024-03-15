@@ -2,6 +2,7 @@ name: spring-cloud-kubernetes-discoveryserver
 namespace: default
 
 deployment:
+  # https://hub.docker.com/r/springcloud/spring-cloud-kubernetes-discoveryserver/tags
   image: springcloud/spring-cloud-kubernetes-discoveryserver:3.1.0
   pullPolicy: IfNotPresent
   updateStrategy: RollingUpdate
