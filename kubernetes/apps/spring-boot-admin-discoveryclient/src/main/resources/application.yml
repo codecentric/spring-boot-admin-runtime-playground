@@ -72,4 +72,3 @@ info: # Application-Infos for the Info-Actuator
 logging: # Logging-File for the Logfile-Actuator
   file:
     name: "spring-boot-admin.log"
-debug: true
