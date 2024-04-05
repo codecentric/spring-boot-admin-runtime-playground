@@ -18,6 +18,11 @@ spring:
         all-namespaces: true
         include-not-ready-addresses: true
         discovery-server-url: "http://spring-cloud-kubernetes-discoveryserver"
+      http:
+        discovery:
+          catalog:
+            watcher:
+              enabled: true
 # for local development (starting directly from IDE), enable port forwarding for discovery server and use the following
 # three lines instead of the one above
 #        discovery-server-url: "http://localhost:8761"
@@ -67,3 +72,4 @@ info: # Application-Infos for the Info-Actuator
 logging: # Logging-File for the Logfile-Actuator
   file:
     name: "spring-boot-admin.log"
+debug: true

@@ -27,6 +27,8 @@ spec:
         image: {{ .Values.deployment.image }}
         imagePullPolicy: {{ .Values.deployment.pullPolicy }}
         env:
+          - name: SPRING_CLOUD_KUBERNETES_HTTP_DISCOVERY_CATALOG_WATCHER_ENABLED
+            value: "TRUE"
         {{- with .Values.deployment.env }}
         {{- range $env_var, $key := . }}
           - name: {{ $env_var }}
