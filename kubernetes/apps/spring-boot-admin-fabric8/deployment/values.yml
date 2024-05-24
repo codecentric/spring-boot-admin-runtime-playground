@@ -5,3 +5,4 @@ deployment:
   env:
     SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Kubernetes Fabric8
   image: spring-boot-admin:fabric8
+  group: spring-boot-admin

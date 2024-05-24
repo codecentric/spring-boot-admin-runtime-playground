@@ -3,3 +3,4 @@ name: health-simulator
 deployment:
   image: health-simulator
   replicas: 1
+  group: spring-boot-app

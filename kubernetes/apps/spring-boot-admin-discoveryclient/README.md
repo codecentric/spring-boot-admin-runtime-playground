@@ -5,11 +5,6 @@ Therefore, it needs a running spring-cloud-kubernetes-discoveryserver.
 For this reason, the SBA server does not need kubernetes api permissions on kubernetes itself and uses the 
 spring-boot-app helmchart.
 
-
-TODO does not add new services that are started after this one, seems is no Watch like in the other discovery clients. 
-This also means that it does not add itself to the list of services. 
-
-
 Make sure [discoveryserver](../../helm-charts/spring-cloud-kubernetes-discoveryserver/README.md) is running before deploying this app.
 
 

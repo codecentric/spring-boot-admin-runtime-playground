@@ -9,3 +9,4 @@ deployment:
   management:
     port: 8081
   image: spring-boot-admin:discocli
+  group: spring-boot-admin

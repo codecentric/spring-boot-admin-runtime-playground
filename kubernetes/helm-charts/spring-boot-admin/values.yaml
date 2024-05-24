@@ -22,3 +22,4 @@ deployment:
     port: 8080
   management:
     port: 8081
+  group: default

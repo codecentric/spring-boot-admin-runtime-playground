@@ -3,3 +3,4 @@ name: hello-world
 deployment:
   image: hello-world
   replicas: 3
+  group: spring-boot-app

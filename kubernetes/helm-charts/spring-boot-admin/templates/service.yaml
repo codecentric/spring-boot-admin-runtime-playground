@@ -6,9 +6,9 @@ metadata:
   labels:
     app: {{ .Values.name }}
     spring-boot: "true"
-  # Filter discovery to tagged services
   annotations:
-    spring-boot-admin: "true"
+    spring-boot-admin: "true"  # used by SBA server to filter services (e.g. when using fabric8 client)
+    group: {{ .Values.deployment.group }} # optional: used by SBA frontend to group services
 spec:
   ports:
     - port: {{ .Values.deployment.server.port }}

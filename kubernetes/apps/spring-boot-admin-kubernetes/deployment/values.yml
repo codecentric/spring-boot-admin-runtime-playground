@@ -9,3 +9,4 @@ deployment:
   management:
     port: 9091
   image: spring-boot-admin:kubernetes
+  group: spring-boot-admin
