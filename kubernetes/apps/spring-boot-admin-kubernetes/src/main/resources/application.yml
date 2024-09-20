@@ -16,8 +16,8 @@ spring:
         metadata:
           ports:
             management: 9091
-        serviceLabels:
-          spring-boot: true
+        serviceLabels: # Filter discovery to tagged services
+          spring-boot: true # is added as label in service.yaml in helm chart
 
 management: # Actuator Configuration
   server:
