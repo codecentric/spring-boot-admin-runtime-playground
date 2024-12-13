@@ -1,0 +1,26 @@
+services:
+  hello-world:
+    container_name: hello-world-consul
+    image: hello-world-consul
+    ports:
+      - "8180:8080"
+      - "8181:8081"
+
+  spring-boot-admin:
+    container_name: spring-boot-admin-consul
+    image: spring-boot-admin-consul
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+
+#  consul-agent:
+#    image: hashicorp/consul:latest
+#    command: "agent -retry-join consul-server -client 0.0.0.0"
+
+
+  consul-server:
+    image: hashicorp/consul:latest
+    command: "agent -server -ui -node=server-1 -bootstrap-expect=1 -client 0.0.0.0"
+    ports:
+      - "8500:8500"

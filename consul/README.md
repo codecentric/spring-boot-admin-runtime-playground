@@ -1,10 +1,12 @@
-## Spring Boot Admin - Eureka Example
+## Spring Boot Admin - Consul Example
 
-Allows to run Spring Boot Admin and a sample app (hello world) with service discovery via eureka. 
+Allows to run Spring Boot Admin and a sample app (hello world) with service discovery via consul.
 
 This Readme will guide you through all setup steps for the infrastructure.
 
-## Prerequisites 
+TODO admin cannot yet call the services, some networking issue needs to be solved
+
+## Prerequisites
 
 - Java
 - Maven
@@ -16,7 +18,7 @@ You can run the whole build and start all apps in docker containers with the fol
 chmod u+x buildAndRunAll.sh
 ./buildAndRunAll.sh
 ```
-Eureka UI: http://localhost:8761/
+Consul UI: http://localhost:8500/
 
 Admin UI: http://localhost:8080/
 
