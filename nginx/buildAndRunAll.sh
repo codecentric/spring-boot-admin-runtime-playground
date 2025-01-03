@@ -8,4 +8,4 @@ cd apps/hello-world
 ./build.sh
 cd ../..
 
-docker-compose up -d
+docker compose up -d

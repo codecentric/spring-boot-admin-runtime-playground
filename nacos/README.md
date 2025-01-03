@@ -21,7 +21,7 @@ http://localhost:8080/
 
 ## Stop Everything
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
 
 ## Step-by-step Guide
