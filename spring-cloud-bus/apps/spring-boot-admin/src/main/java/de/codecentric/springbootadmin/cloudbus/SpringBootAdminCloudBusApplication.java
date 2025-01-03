@@ -1,4 +1,4 @@
-package de.codecentric.springbootadmin.nginx;
+package de.codecentric.springbootadmin.cloudbus;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

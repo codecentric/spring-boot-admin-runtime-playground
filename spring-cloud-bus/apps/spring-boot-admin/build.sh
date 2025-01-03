@@ -3,4 +3,4 @@
 # Build App
 mvn package
 # Build Docker Image
-docker build --tag spring-boot-admin-nginx .
+docker build --tag spring-boot-admin-cloudbus .

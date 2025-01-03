@@ -1,10 +1,10 @@
-package de.codecentric.helloworld.nginx;
+package de.codecentric.springbootadmin.cloudbus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloWorldCloudBusApplicationTests {
+class SpringBootAdminCloudBusApplicationTests {
 
 	@Test
 	void contextLoads() {

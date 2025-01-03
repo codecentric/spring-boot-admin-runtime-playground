@@ -1,4 +1,4 @@
-package de.codecentric.helloworld.nginx;
+package de.codecentric.helloworld.cloudbus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package de.codecentric.helloworld.nginx;
+package de.codecentric.helloworld.cloudbus;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
