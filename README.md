@@ -5,11 +5,16 @@ Not intended for production usage, but to reproduce issues or to try out things.
 
 ## Discovery
 
-### Kubernetes
 - [kubernetes](kubernetes)
 
-### Nacos
 - [nacos](nacos)
 
+- [eureka](eureka)
+
 ## Proxy
+
 - [nginx](nginx)
+
+## Cloud
+
+- [Spring Cloud Bus](spring-cloud-bus)
