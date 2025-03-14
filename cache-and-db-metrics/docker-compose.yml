@@ -1,0 +1,19 @@
+services:
+
+  redis:
+      image: redis:alpine
+      restart: always
+      ports:
+      - "6379:6379"
+
+  hello-cache:
+    container_name: hello-cache
+    image: hello-cache
+    ports:
+      - "8180:8080"
+
+  spring-boot-admin:
+    container_name: spring-boot-admin-metrics
+    image: spring-boot-admin-metrics
+    ports:
+      - "8080:8080"

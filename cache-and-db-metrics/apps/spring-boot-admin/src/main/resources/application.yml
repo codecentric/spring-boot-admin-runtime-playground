@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application: # Application-Info for the Info-Actuator
+    name: "@pom.artifactId@"
+  boot:
+    admin:
+      client:
+        # Self-Registration @itself
+        url: "http://localhost:8080"
+management: # Actuator Configuration
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
