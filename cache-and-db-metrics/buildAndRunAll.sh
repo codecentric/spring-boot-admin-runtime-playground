@@ -8,4 +8,4 @@ cd apps/hello-data
 ./build.sh
 cd ../..
 
-docker-compose up -d
+docker compose up -d

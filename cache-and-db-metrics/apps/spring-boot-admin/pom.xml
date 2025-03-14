@@ -11,7 +11,7 @@
   </parent>
 
   <groupId>de.codecentric</groupId>
-  <artifactId>spring-boot-admin-metrics</artifactId>
+  <artifactId>spring-boot-admin</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <version>1.0.0-SNAPSHOT</version>
@@ -34,12 +34,6 @@
     <dependency>
       <groupId>de.codecentric</groupId>
       <artifactId>spring-boot-admin-starter-server</artifactId>
-      <version>${spring-boot-admin.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>de.codecentric</groupId>
-      <artifactId>spring-boot-admin-starter-client</artifactId>
       <version>${spring-boot-admin.version}</version>
     </dependency>
   </dependencies>

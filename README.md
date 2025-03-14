@@ -13,3 +13,6 @@ Not intended for production usage, but to reproduce issues or to try out things.
 
 ## Proxy
 - [nginx](nginx)
+
+## Metrics
+- [Cache and DB metrics](cache-and-db-metrics)
