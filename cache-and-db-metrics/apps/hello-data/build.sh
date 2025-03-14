@@ -3,4 +3,4 @@
 # Build App
 mvn package
 # Build Docker Image
-docker build --tag hello-cache .
+docker build --tag hello-data .

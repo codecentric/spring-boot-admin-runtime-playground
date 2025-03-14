@@ -4,7 +4,7 @@ cd apps/spring-boot-admin
 ./build.sh
 cd ../..
 
-cd apps/hello-cache
+cd apps/hello-data
 ./build.sh
 cd ../..
 

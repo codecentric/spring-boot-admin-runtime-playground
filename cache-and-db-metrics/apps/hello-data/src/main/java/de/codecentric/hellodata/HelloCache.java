@@ -1,4 +1,4 @@
-package de.codecentric.hellocache;
+package de.codecentric.hellodata;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -6,9 +6,9 @@ services:
       ports:
       - "6379:6379"
 
-  hello-cache:
-    container_name: hello-cache
-    image: hello-cache
+  hello-data:
+    container_name: hello-data
+    image: hello-data
     ports:
       - "8180:8080"
 

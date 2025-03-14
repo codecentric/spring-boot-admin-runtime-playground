@@ -11,11 +11,11 @@
   </parent>
 
   <groupId>de.codecentric</groupId>
-  <artifactId>hello-cache</artifactId>
+  <artifactId>hello-data</artifactId>
   <packaging>jar</packaging>
   <name>${project.artifactId}</name>
   <version>3.4.0-SNAPSHOT</version>
-  <description>Hello Cache</description>
+  <description>Hello Data</description>
 
   <properties>
     <spring-boot-admin.version>3.4.5</spring-boot-admin.version>
@@ -43,6 +43,16 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
+    <!-- Database -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
     <!-- Lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
