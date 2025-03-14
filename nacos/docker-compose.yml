@@ -1,6 +1,6 @@
 services:
   nacos:
-    image: nacos/nacos-server:v2.3.1-slim
+    image: nacos/nacos-server:v2.5.1-slim
     container_name: nacos-server
     environment:
       - MODE=standalone
