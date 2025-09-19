@@ -6,7 +6,7 @@ spring:
   boot:
     admin:
       client:
-        url: "http://spring-boot-admin-nginx:8082" # use docker-compose internal service name to access sba server
+        url: "http://spring-boot-admin-nginx:8082" # use docker compose internal service name to access sba server
         instance:
           # if admin server should talk to hello through proxy, the following properties could be used,
           # see https://docs.spring-boot-admin.com/current/client.html#spring-boot-admin-client

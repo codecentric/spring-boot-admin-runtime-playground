@@ -23,5 +23,5 @@ chmod u+x buildAndRunAll.sh
 
 ## Stop Everything
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
