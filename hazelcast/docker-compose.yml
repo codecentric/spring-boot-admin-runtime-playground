@@ -1,0 +1,26 @@
+services:
+  hazelcast:
+    image: hazelcast/hazelcast
+    ports:
+      - "5701:5701"
+    restart: always
+
+  hello-world:
+    container_name: hello-world-hazelcast
+    image: hello-world-hazelcast
+
+  spring-boot-admin-member-1:
+    container_name: spring-boot-admin-hazelcast-member-1
+    image: spring-boot-admin-hazelcast
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_BOOT_ADMIN_UI_PUBLICURL: http://localhost:8080
+
+  spring-boot-admin-member-2:
+    container_name: spring-boot-admin-hazelcast-member-2
+    image: spring-boot-admin-hazelcast
+    ports:
+      - "8090:8080"
+    environment:
+      SPRING_BOOT_ADMIN_UI_PUBLICURL: http://localhost:8090
