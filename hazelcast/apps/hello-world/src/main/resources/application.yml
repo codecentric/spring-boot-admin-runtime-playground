@@ -1,0 +1,47 @@
+server:
+  port: 8081
+spring:
+  application: # Application-Info for the Info-Actuator
+    name: "@pom.artifactId@"
+  boot:
+    admin:
+      client:
+        url: "http://spring-boot-admin-member-1:8080" # use docker compose internal service name to access sba server
+        instance:
+          # if admin server should talk to hello through proxy, the following properties could be used,
+          # see https://docs.spring-boot-admin.com/current/client.html#spring-boot-admin-client
+          #health-url: "http://host.docker.internal:8888/hello/actuator/health"
+          #management-url: "http://host.docker.internal:8888/hello/actuator"
+          #management-base-url: "http://host.docker.internal:8888/hello"
+          #service-url: "http://host.docker.internal:8888/hello"
+management: # Actuator Configuration
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+info: # Application-Info for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@pom.parent.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@pom.parent.version@"
+logging: # Logging-File for the Logfile-Actuator
+  file:
+    name: "hello-world.log"
+  level:
+    ROOT: debug
