@@ -1,6 +1,13 @@
 spring:
   application: # Application-Info for the Info-Actuator
     name: "@pom.artifactId@"
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            hello-world:
+              - uri: http://hello-world-hazelcast:8081
 
 management: # Actuator Configuration
   endpoints:
@@ -31,25 +38,3 @@ info: # Application-Info for the Info-Actuator
 logging: # Logging-File for the Logfile-Actuator
   file:
     name: "hello-world.log"
-
-# Hazelcast configuration for cluster and maps
-hazelcast:
-  config:
-    map:
-      eventStoreMap:
-        in-memory-format: OBJECT # Data is stored as Java objects in memory
-        backup-count: 1 # One backup copy of the data is kept in the cluster
-        merge-policy:
-          class-name: com.hazelcast.spi.merge.PutIfAbsentMergePolicy # Merge strategy: only add if not present
-          batch-size: 100 # Number of entries per merge batch
-      sentNotificationsMap:
-        in-memory-format: OBJECT # Data is stored as Java objects in memory
-        backup-count: 1 # One backup copy of the data is kept in the cluster
-        eviction:
-          eviction-policy: LRU # LRU: least recently used entries are evicted
-          max-size-policy: PER_NODE # Maximum size per cluster node
-        merge-policy:
-          class-name: com.hazelcast.spi.merge.PutIfAbsentMergePolicy # Merge strategy: only add if not present
-          batch-size: 100 # Number of entries per merge batch
-    properties:
-      hazelcast.jmx: true # Enable JMX integration for monitoring

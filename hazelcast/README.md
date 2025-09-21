@@ -3,7 +3,7 @@
 - http://localhost:8080 -> Spring Boot Main Application
 - http://localhost:8090 -> Spring Boot Replica Application
 
-![img.png](img.png)
+![Architecture](architecture.svg)
 
 ## Prerequisites
 

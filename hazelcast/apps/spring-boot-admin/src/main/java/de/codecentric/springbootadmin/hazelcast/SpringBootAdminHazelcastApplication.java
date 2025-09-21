@@ -15,9 +15,9 @@ import static java.util.Collections.singletonList;
 @EnableAdminServer
 public class SpringBootAdminHazelcastApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAdminHazelcastApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootAdminHazelcastApplication.class, args);
+    }
 
     @Bean
     public Config hazelcastConfig() {
@@ -37,10 +37,18 @@ public class SpringBootAdminHazelcastApplication {
                 .setEvictionConfig(
                         new EvictionConfig().setEvictionPolicy(EvictionPolicy.LRU).setMaxSizePolicy(MaxSizePolicy.PER_NODE))
                 .setMergePolicyConfig(new MergePolicyConfig(PutIfAbsentMergePolicy.class.getName(), 100));
+
         Config config = new Config();
         config.addMapConfig(eventStoreMap);
         config.addMapConfig(sentNotificationsMap);
         config.setProperty("hazelcast.jmx", "true");
+
+        // network and join configuration (simple defaults good for local/dev)
+        NetworkConfig network = config.getNetworkConfig();
+        network.setPort(5701).setPortAutoIncrement(true);
+
+        JoinConfig join = network.getJoin();
+        join.getMulticastConfig().setEnabled(true);
 
         return config;
     }
