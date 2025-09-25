@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/eclipse-temurin/
-FROM eclipse-temurin:21
+FROM eclipse-temurin:25
 
 VOLUME /tmp
 
