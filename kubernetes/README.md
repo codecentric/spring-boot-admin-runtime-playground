@@ -82,3 +82,15 @@ helm upgrade --install <your-app-name> helm-charts/spring-boot-app --set name=<y
 ```bash
 helm uninstall <your-app-name>
 ```
+
+## Check Kubernetes Resources
+
+```bash
+kubectl get all -o wide
+```
+
+## Pull Traefik Image 
+
+```bash
+docker pull traefik:3
+```
