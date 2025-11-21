@@ -94,5 +94,5 @@ kubectl get all -o wide
 ## Pull Traefik Image 
 
 ```bash
-docker pull traefik:3
+docker pull traefik:2
 ```
