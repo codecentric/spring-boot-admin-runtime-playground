@@ -1,5 +1,4 @@
 name: spring-boot-admin-kubernetes
-namespace: default
 
 deployment:
   env:

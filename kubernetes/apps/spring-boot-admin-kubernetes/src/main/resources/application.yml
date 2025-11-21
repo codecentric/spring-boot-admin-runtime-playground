@@ -7,7 +7,7 @@ spring:
   boot:
     admin:
       ui:
-        # public-url: ${SPRING_BOOT_ADMIN_UI_PUBLIC_URL:http://localhost:8080}
+        # public-url: ${SPRING_BOOT_ADMIN_UI_PUBLIC_URL:http://localhost:9090}
         title: ${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}
         brand: <img src="assets/img/icon-spring-boot-admin.svg"><span>${SPRING_BOOT_ADMIN_UI_TITLE:Spring Boot Admin}</span>
   cloud:

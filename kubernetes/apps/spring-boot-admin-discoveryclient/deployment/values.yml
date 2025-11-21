@@ -1,5 +1,4 @@
 name: spring-boot-admin-discoveryclient
-namespace: default
 
 deployment:
   env:

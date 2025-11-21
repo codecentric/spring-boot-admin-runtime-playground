@@ -1,10 +1,9 @@
 name: spring-boot-app-default
-namespace: default
+namespace: spring-boot-admin
 
 deployment:
   image: spring-boot-app-default
-  # do not pull image but use locally built image, not recommended for production
-  pullPolicy: Never
+  pullPolicy: Always
   updateStrategy: RollingUpdate
   maxSurge: 100%
   maxUnavailable: 0%
