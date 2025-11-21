@@ -1,5 +1,5 @@
 name: spring-boot-admin
-namespace: spring-boot-admin
+namespace: default
 
 deployment:
   env:

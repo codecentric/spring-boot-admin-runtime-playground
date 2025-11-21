@@ -1,5 +1,5 @@
 name: spring-cloud-kubernetes-discoveryserver
-namespace: spring-boot-admin
+namespace: default
 
 deployment:
   # https://hub.docker.com/r/springcloud/spring-cloud-kubernetes-discoveryserver/tags
