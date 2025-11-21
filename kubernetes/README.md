@@ -23,20 +23,7 @@ This Readme will guide you through all setup steps for the infrastructure.
 ```bash
 kubectl config get-contexts
 kubectl config use-context docker-desktop
-```
-
-## Kubernetes Namespace
-
-## Create Namespace
-
-```bash
-kubectl create namespace spring-boot-admin
-```
-
-## Switch Namespace
-
-```bash
-kubectl config set-context --current --namespace=spring-boot-admin
+kubectl config set-context --current --namespace=default
 ```
 
 ## Install Helm

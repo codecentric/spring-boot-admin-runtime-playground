@@ -1,5 +1,5 @@
 name: spring-boot-app-default
-namespace: spring-boot-admin
+namespace: default
 
 deployment:
   image: spring-boot-app-default
