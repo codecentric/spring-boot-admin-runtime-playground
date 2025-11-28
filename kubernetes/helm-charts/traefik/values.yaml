@@ -1,0 +1,4 @@
+namespace: default
+
+deployment:
+  image: traefik:3

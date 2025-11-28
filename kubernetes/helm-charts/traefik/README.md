@@ -6,7 +6,7 @@ https://doc.traefik.io/traefik/getting-started/quick-start-with-kubernetes/
 
 ## Install Traefik
 ```bash
-helm upgrade --install traefik .
+helm upgrade --install traefik . -f values.yaml
 ```
 
 ### Check deployment
