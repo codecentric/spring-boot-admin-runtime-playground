@@ -6,7 +6,7 @@ https://docs.spring.io/spring-cloud-kubernetes/reference/spring-cloud-kubernetes
 
 ## Install Spring Cloud Kubernetes Discovery Server
 ```bash
-helm upgrade --install spring-cloud-kubernetes-discoveryserver .
+helm upgrade --install spring-cloud-kubernetes-discoveryserver . -f values.yaml
 ```
 
 ### Check deployment

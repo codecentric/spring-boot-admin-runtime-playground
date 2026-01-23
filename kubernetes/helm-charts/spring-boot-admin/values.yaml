@@ -5,8 +5,7 @@ deployment:
   env:
     SPRING_BOOT_ADMIN_UI_TITLE: Spring Boot Admin - Kubernetes
   image: spring-boot-admin
-  # do not pull image but use locally built image, not recommended for production
-  pullPolicy: Never
+  pullPolicy: Always
   updateStrategy: RollingUpdate
   maxSurge: 100%
   maxUnavailable: 0%

@@ -4,18 +4,29 @@ metadata:
   name: traefik-role
 
 rules:
+  # Core Kubernetes Ressourcen
   - apiGroups:
       - ""
     resources:
       - services
       - endpoints
       - secrets
+      - nodes
     verbs:
       - get
       - list
       - watch
+  # EndpointSlices
   - apiGroups:
-      - extensions
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+    verbs:
+      - list
+      - watch
+      - get
+  # Standard Kubernetes Ingress API
+  - apiGroups:
       - networking.k8s.io
     resources:
       - ingresses
@@ -25,7 +36,6 @@ rules:
       - list
       - watch
   - apiGroups:
-      - extensions
       - networking.k8s.io
     resources:
       - ingresses/status

@@ -1,7 +1,7 @@
 package de.codecentric.healthsimulator.health;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.actuate.health.Status;
+import org.springframework.boot.health.contributor.Status;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

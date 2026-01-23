@@ -1,5 +1,4 @@
 name: spring-boot-admin-fabric8
-namespace: default
 
 deployment:
   env:

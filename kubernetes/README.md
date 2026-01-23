@@ -19,9 +19,11 @@ This Readme will guide you through all setup steps for the infrastructure.
 - <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>
 
 ### Change Kubernetes Context
+
 ```bash
 kubectl config get-contexts
 kubectl config use-context docker-desktop
+kubectl config set-context --current --namespace=default
 ```
 
 ## Install Helm
@@ -81,4 +83,16 @@ helm upgrade --install <your-app-name> helm-charts/spring-boot-app --set name=<y
 
 ```bash
 helm uninstall <your-app-name>
+```
+
+## Check Kubernetes Resources
+
+```bash
+kubectl get all -o wide
+```
+
+## Pull Traefik Image
+
+```bash
+docker pull traefik:3
 ```
