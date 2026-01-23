@@ -91,7 +91,7 @@ helm uninstall <your-app-name>
 kubectl get all -o wide
 ```
 
-## Pull Traefik Image 
+## Pull Traefik Image
 
 ```bash
 docker pull traefik:3
