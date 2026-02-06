@@ -21,7 +21,7 @@
     <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring-boot-admin.version>3.5.5</spring-boot-admin.version>
-    <spring-cloud.version>2025.0.0</spring-cloud.version>
+    <spring-cloud.version>2025.1.1</spring-cloud.version>
   </properties>
 
   <dependencyManagement>
