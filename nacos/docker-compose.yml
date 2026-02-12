@@ -2,7 +2,7 @@ name: "spring-boot-admin-runtime-playground-nacos"
 
 services:
   nacos:
-    image: nacos/nacos-server:v3.0.3-slim
+    image: nacos/nacos-server:v3.1.1-slim
     container_name: nacos-server
     environment:
       - MODE=standalone
