@@ -1,3 +1,5 @@
+name: "spring-boot-admin-runtime-playground-nacos"
+
 services:
   nacos:
     image: nacos/nacos-server:v3.0.3-slim

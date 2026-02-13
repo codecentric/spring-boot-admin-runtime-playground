@@ -1,3 +1,5 @@
+name: "spring-boot-admin-runtime-playground-eureka"
+
 services:
   eureka:
     image: eureka-server
