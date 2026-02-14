@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: spring-boot-admin-cloud-bus
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management: # Actuator Configuration
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint: # Health-Actuator
+    health:
+      show-details: always
+    env:
+      post:
+        enabled: true
+  info: # Info-Actuator
+    java:
+      enabled: true
+    os:
+      enabled: true
+    build:
+      enabled: true
+    env:
+      enabled: true
+info: # Application-Info for the Info-Actuator
+  group: "@pom.groupId@"
+  artifact: "@pom.artifactId@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+  spring-boot: "@pom.parent.version@"
+  # Tags for the Spring Boot Admin UI
+  tags:
+    spring-boot: "@pom.parent.version@"
+  level:
+    de.codecentric.boot.admin: DEBUG
