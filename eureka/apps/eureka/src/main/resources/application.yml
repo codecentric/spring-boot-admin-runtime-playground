@@ -3,6 +3,9 @@ server:
 spring:
   application: # Application-Info for the Info-Actuator
     name: "@pom.artifactId@"
+  cloud:
+    refresh:
+      enabled: false
 eureka:
   client:
     registerWithEureka: true
