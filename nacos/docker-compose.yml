@@ -2,10 +2,14 @@ name: "spring-boot-admin-runtime-playground-nacos"
 
 services:
   nacos:
-    image: nacos/nacos-server:v3.0.3-slim
+    image: nacos/nacos-server:v3.1.1-slim
     container_name: nacos-server
     environment:
       - MODE=standalone
+      - NACOS_AUTH_ENABLE=false
+      - NACOS_AUTH_TOKEN=TmFjb3NTZWNyZXRLZXkyMDI1UGxheWdyb3VuZFRva2Vu
+      - NACOS_AUTH_IDENTITY_KEY=nacos
+      - NACOS_AUTH_IDENTITY_VALUE=nacos
     ports:
       - "8848:8848"
       - "9848:9848"

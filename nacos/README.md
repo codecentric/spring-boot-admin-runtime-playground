@@ -28,7 +28,13 @@ docker compose down -v
 
 ### Start Nacos
 ```bash
-docker run --name nacos-standalone -e MODE=standalone -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:v2.2.3-slim
+docker run --name nacos-standalone \
+  -e MODE=standalone \
+  -e NACOS_AUTH_ENABLE=false \
+  -e NACOS_AUTH_TOKEN=TmFjb3NTZWNyZXRLZXkyMDI1UGxheWdyb3VuZFRva2Vu \
+  -e NACOS_AUTH_IDENTITY_KEY=nacos \
+  -e NACOS_AUTH_IDENTITY_VALUE=nacos \
+  -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:v3.1.1-slim
 ```
 
 ### Build & Run Apps
