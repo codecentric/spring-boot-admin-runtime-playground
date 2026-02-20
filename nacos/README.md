@@ -11,6 +11,7 @@ This Readme will guide you through all setup steps for the infrastructure.
 - Docker and Docker Compose
 
 ## Run Everything
+
 You can run the whole build and start all apps in docker containers with the following script or follow the step-by-step guide below.
 ```bash
 chmod u+x buildAndRunAll.sh
@@ -20,6 +21,7 @@ chmod u+x buildAndRunAll.sh
 http://localhost:8080/
 
 ## Stop Everything
+
 ```bash
 docker compose down -v
 ```
@@ -27,6 +29,7 @@ docker compose down -v
 ## Step-by-step Guide
 
 ### Start Nacos
+
 ```bash
 docker run --name nacos-standalone \
   -e MODE=standalone \
@@ -44,6 +47,7 @@ docker run --name nacos-standalone \
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Installing Other Spring Boot Apps
+
 To let Spring Boot Admin automatically discover another Spring Boot app in this scenario, do the following:
 
 - Add the Nacos discovery starter dependency to your app:

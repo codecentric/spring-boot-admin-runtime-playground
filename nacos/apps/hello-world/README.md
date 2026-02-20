@@ -31,7 +31,6 @@ docker run --name hello-world-nacos -e NACOS_SERVER_ADDR=host.docker.internal:88
 
 - http://localhost:8180/
 
-## Access Actuator
-### URI
+### Access Actuator
 
 - http://localhost:8181/actuator

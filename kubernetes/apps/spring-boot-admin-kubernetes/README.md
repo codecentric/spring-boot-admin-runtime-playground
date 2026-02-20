@@ -14,21 +14,25 @@ chmod u+x buildAndInstall.sh
 ## Step-by-step build
 
 ### Build App
+
 ```bash
 mvn clean install
 ```
 
 ### Build Docker Image
+
 ```bash
 docker build --tag spring-boot-admin:kubernetes .
 ```
 
 ### Install App
+
 ```bash
 helm upgrade --install spring-boot-admin-kubernetes ../../helm-charts/spring-boot-admin -f deployment/values.yml
 ```
 
 ### Check deployment
+
 ```bash
 kubectl get pods -o wide
 kubectl get services -o wide
@@ -39,6 +43,7 @@ kubectl get rolebinding -o wide
 ```
 
 ### Uninstall
+
 ```bash
 helm uninstall spring-boot-admin-kubernetes
 ```
@@ -48,12 +53,15 @@ helm uninstall spring-boot-admin-kubernetes
 - http://localhost/spring-boot-admin-kubernetes (requires [traefik](../../helm-charts/traefik/README.md) to be running)
 
 ## Access Actuator
+
 ```bash
 kubectl get pods
 ```
+
 ```bash
 kubectl port-forward <pod-name> 9091:9091
 ```
+
 ### URI
 
 - http://localhost:9091/actuator

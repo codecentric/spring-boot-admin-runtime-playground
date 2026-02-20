@@ -31,7 +31,6 @@ docker run --name spring-boot-admin-nacos -e NACOS_SERVER_ADDR=host.docker.inter
 
 - http://localhost:8080/
 
-## Access Actuator
-### URI
+### Access Actuator
 
 - http://localhost:8081/actuator

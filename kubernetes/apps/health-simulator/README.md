@@ -56,6 +56,7 @@ helm uninstall health-simulator
 - http://localhost/health-simulator/out_of_service
 
 ## Access Actuator
+
 ```bash
 kubectl get pods
 ```

@@ -12,6 +12,7 @@ chmod u+x buildAndInstall.sh
 ## Step-by-step build
 
 ### Build App
+
 ```bash
 mvn clean install
 ```
@@ -27,6 +28,7 @@ helm upgrade --install hello-world ../../helm-charts/spring-boot-app -f deployme
 ```
 
 ### Check deployment
+
 ```bash
 kubectl get pods -o wide
 kubectl get services -o wide
@@ -34,6 +36,7 @@ kubectl get ingress
 ```
 
 ### Uninstall
+
 ```bash
 helm uninstall hello-world
 ```
@@ -43,6 +46,7 @@ helm uninstall hello-world
 - http://localhost/hello-world
 
 ## Access Actuator
+
 ```bash
 kubectl get pods
 ```

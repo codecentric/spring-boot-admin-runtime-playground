@@ -42,7 +42,6 @@ docker run --name health-simulator-nacos -e NACOS_SERVER_ADDR=host.docker.intern
 - http://localhost:8280/unknown
 - http://localhost:8280/out_of_service
 
-## Access Actuator
-### URI
+### Access Actuator
 
 - http://localhost:8281/actuator
