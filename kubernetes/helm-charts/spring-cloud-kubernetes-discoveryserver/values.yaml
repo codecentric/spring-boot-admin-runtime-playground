@@ -3,7 +3,7 @@ namespace: default
 
 deployment:
   # https://hub.docker.com/r/springcloud/spring-cloud-kubernetes-discoveryserver/tags
-  image: springcloud/spring-cloud-kubernetes-discoveryserver:5.0.1-SNAPSHOT
+  image: springcloud/spring-cloud-kubernetes-discoveryserver:5.0.3-SNAPSHOT
   pullPolicy: Always
   updateStrategy: RollingUpdate
   maxSurge: 100%
