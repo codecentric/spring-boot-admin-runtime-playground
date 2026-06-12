@@ -9,3 +9,24 @@ deployment:
     port: 8081
   image: spring-boot-admin:discocli
   group: spring-boot-admin
+  # Spring Boot Admin is heavier than a plain spring-boot-app — override the chart default (256Mi).
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "200m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  # Wait for the discovery server to be ready before starting this container.
+  # Without this, the Spring context fails on startup because the discovery server
+  # is not yet reachable, causing repeated crash-restarts.
+  initContainers:
+    - name: wait-for-discoveryserver
+      image: busybox:1.36
+      command:
+        - /bin/sh
+        - -c
+        - >-
+          until wget -q --timeout=5 -O /dev/null
+          http://spring-cloud-kubernetes-discoveryserver/actuator/health/readiness;
+          do echo "waiting for discovery server..."; sleep 5; done

@@ -9,12 +9,27 @@ deployment:
   maxUnavailable: 0%
   replicas: 2
   restartPolicy: Always
+  # startupProbe gives the app a generous startup window before liveness/readiness activate.
+  # Budget: failureThreshold * periodSeconds = 30 * 10s = 300s max startup time.
+  startupProbe:
+    failureThreshold: 30
+    periodSeconds: 10
+    timeoutSeconds: 10
+  # initialDelaySeconds: 0 — safe because startupProbe blocks liveness/readiness until the
+  # app is up. Keeping it at 0 means Kubernetes reacts immediately once startup succeeds.
   livenessProbe:
-    initialDelaySeconds: 10
+    initialDelaySeconds: 0
     timeoutSeconds: 10
   readinessProbe:
-    initialDelaySeconds: 10
+    initialDelaySeconds: 0
     timeoutSeconds: 10
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "500m"
   server:
     port: 8080
   management:

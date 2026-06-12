@@ -41,6 +41,15 @@ spec:
         - containerPort: {{ .Values.deployment.management.port }}
           name: management
           protocol: TCP
+        {{- if .Values.deployment.startupProbe }}
+        startupProbe:
+          httpGet:
+            path: /{{ .Values.name }}/livez
+            port: {{ .Values.deployment.server.port }}
+          failureThreshold: {{ .Values.deployment.startupProbe.failureThreshold }}
+          periodSeconds: {{ .Values.deployment.startupProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.deployment.startupProbe.timeoutSeconds }}
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /{{ .Values.name }}/livez
@@ -53,3 +62,7 @@ spec:
             port: {{ .Values.deployment.server.port }}
           initialDelaySeconds: {{ .Values.deployment.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.deployment.readinessProbe.timeoutSeconds }}
+        {{- if .Values.deployment.resources }}
+        resources:
+          {{- toYaml .Values.deployment.resources | nindent 10 }}
+        {{- end }}
