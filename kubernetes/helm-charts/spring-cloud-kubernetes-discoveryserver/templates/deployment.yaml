@@ -39,6 +39,15 @@ spec:
         - containerPort: 8761
           name: http
           protocol: TCP
+        {{- with .Values.deployment.startupProbe }}
+        startupProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8761
+          failureThreshold: {{ .failureThreshold }}
+          periodSeconds: {{ .periodSeconds }}
+          timeoutSeconds: {{ .timeoutSeconds }}
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
@@ -51,3 +60,7 @@ spec:
             port: 8761
           initialDelaySeconds: {{ .Values.deployment.readinessProbe.initialDelaySeconds }}
           timeoutSeconds: {{ .Values.deployment.readinessProbe.timeoutSeconds }}
+        {{- with .Values.deployment.resources }}
+        resources:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}

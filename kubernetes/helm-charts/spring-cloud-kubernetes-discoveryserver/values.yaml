@@ -10,9 +10,33 @@ deployment:
   maxUnavailable: 0%
   replicas: 1
   restartPolicy: Always
+  # JAVA_TOOL_OPTIONS is read automatically by any JDK 9+ process.
+  # The image is built with Paketo Buildpacks (Bellsoft Liberica); its memory calculator
+  # accounts for all fixed regions (DirectMemory + Metaspace + CodeCache + thread stacks)
+  # and assigns the remainder to heap (-Xmx). With 768Mi the budget is:
+  #   128M (direct) + ~138M (metaspace) + 64M (code cache) + 50M (50 threads) = ~380M fixed
+  #   768M - 380M = ~388M heap
+  # ReservedCodeCacheSize is reduced from the Paketo default of 240M; a discovery server
+  # does not need a large JIT code cache.
+  env:
+    JAVA_TOOL_OPTIONS: "-XX:MaxDirectMemorySize=128m -XX:ReservedCodeCacheSize=64m"
+  resources:
+    requests:
+      memory: "768Mi"
+      cpu: "100m"
+    limits:
+      memory: "768Mi"
+      cpu: "500m"
+  # startupProbe guards the slow JVM + Spring context initialisation phase.
+  # failureThreshold * periodSeconds = maximum startup budget (30 * 10s = 300s).
+  # Once it succeeds, livenessProbe takes over for runtime health checks.
+  startupProbe:
+    failureThreshold: 30
+    periodSeconds: 10
+    timeoutSeconds: 10
   livenessProbe:
-    initialDelaySeconds: 10
+    initialDelaySeconds: 0
     timeoutSeconds: 10
   readinessProbe:
-    initialDelaySeconds: 10
+    initialDelaySeconds: 0
     timeoutSeconds: 10
