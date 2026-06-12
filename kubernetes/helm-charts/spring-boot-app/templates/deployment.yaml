@@ -21,6 +21,10 @@ spec:
         app: {{ .Values.name }}
     spec:
       restartPolicy: {{ .Values.deployment.restartPolicy }}
+      {{- if .Values.deployment.initContainers }}
+      initContainers:
+        {{- toYaml .Values.deployment.initContainers | nindent 8 }}
+      {{- end }}
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.deployment.image }}
