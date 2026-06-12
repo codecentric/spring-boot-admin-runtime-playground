@@ -14,7 +14,7 @@ deployment:
   # is not yet reachable, causing repeated crash-restarts.
   initContainers:
     - name: wait-for-discoveryserver
-      image: busybox:1.36
+      image: busybox:1.38
       command:
         - /bin/sh
         - -c
