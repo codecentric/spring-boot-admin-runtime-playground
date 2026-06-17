@@ -1,0 +1,25 @@
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    restart: always
+
+  hello-world:
+    container_name: hello-world-cloudbus
+    image: hello-world-cloudbus
+    ports:
+      - "8081:8081"
+    environment:
+        - SPRING_BOOT_ADMIN_CLIENT_URL=http://spring-boot-admin:8080
+        - SPRING_RABBITMQ_HOST=rabbitmq
+
+  spring-boot-admin:
+    container_name: spring-boot-admin-cloudbus
+    image: spring-boot-admin-cloudbus
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://spring-boot-admin:8080
+      - SPRING_RABBITMQ_HOST=rabbitmq
