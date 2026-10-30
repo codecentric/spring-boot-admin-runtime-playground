@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>4.1.2</version>
+  </parent>
+
+  <groupId>de.codecentric</groupId>
+  <artifactId>spring-boot-admin-hazelcast</artifactId>
+  <packaging>jar</packaging>
+  <name>${project.artifactId}</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <description>Spring Boot Admin</description>
+
+  <properties>
+    <java.version>17</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Override to test a locally installed snapshot, e.g. -Dspring-boot-admin.version=4.1.5-SNAPSHOT -->
+    <spring-boot-admin.version>4.1.4</spring-boot-admin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webmvc</artifactId>
+    </dependency>
+
+    <!-- Spring Boot Admin -->
+    <dependency>
+      <groupId>de.codecentric</groupId>
+      <artifactId>spring-boot-admin-starter-server</artifactId>
+      <version>${spring-boot-admin.version}</version>
+    </dependency>
+
+    <!-- Hazelcast Clustering -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-hazelcast</artifactId>
+    </dependency>
+
+    <!-- Mail Notifier (sends to Mailpit) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mail</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>app</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>repackage</id>
+            <goals>
+              <goal>repackage</goal>
+              <!-- Build-Info for Info-Actuator -->
+              <goal>build-info</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>process-aot</id>
+            <goals>
+              <goal>process-aot</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- GIT-Info for Info-Actuator -->
+      <plugin>
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
+        <configuration>
+          <offline>true</offline>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

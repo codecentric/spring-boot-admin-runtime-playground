@@ -1,0 +1,114 @@
+name: "spring-boot-admin-runtime-playground-hazelcast"
+
+# Three SBA nodes form a Hazelcast cluster (TCP/IP join), nginx balances between them.
+# Scenario switches are read from the env file passed via `--env-file` (see README and ./scenarios).
+
+x-sba: &sba
+  image: spring-boot-admin-hazelcast
+  environment: &sba-env
+    HAZELCAST_MEMBERS: sba-1,sba-2,sba-3
+    MAIL_HOST: mailpit
+    MAIL_PORT: 1025
+    JAVA_OPTS: ${JAVA_OPTS:-}
+    SPRING_AOT_ENABLED: ${SPRING_AOT_ENABLED:-false}
+    PLAYGROUND_EVENT_STORE: ${PLAYGROUND_EVENT_STORE:-hazelcast}
+    PLAYGROUND_NOTIFIER: ${PLAYGROUND_NOTIFIER:-properties}
+    PLAYGROUND_SHARDING_ENABLED: ${PLAYGROUND_SHARDING_ENABLED:-false}
+    PLAYGROUND_HAZELCAST_EVENT_STORE_TTL_SECONDS: ${PLAYGROUND_HAZELCAST_EVENT_STORE_TTL_SECONDS:-0}
+    PLAYGROUND_HAZELCAST_SENT_NOTIFICATIONS_TTL_SECONDS: ${PLAYGROUND_HAZELCAST_SENT_NOTIFICATIONS_TTL_SECONDS:-0}
+    # Only effective with SBA versions containing PR 5739 / PR 5266
+    SPRING_BOOT_ADMIN_HAZELCAST_EVENT_STORE_ENABLED: ${SPRING_BOOT_ADMIN_HAZELCAST_EVENT_STORE_ENABLED:-true}
+    SPRING_BOOT_ADMIN_HAZELCAST_SENT_NOTIFICATIONS_ENABLED: ${SPRING_BOOT_ADMIN_HAZELCAST_SENT_NOTIFICATIONS_ENABLED:-true}
+    SPRING_BOOT_ADMIN_HAZELCAST_NOTIFICATION_FILTERS_ENABLED: ${SPRING_BOOT_ADMIN_HAZELCAST_NOTIFICATION_FILTERS_ENABLED:-true}
+    SPRING_BOOT_ADMIN_ENDPOINT_CACHE_ENABLED: ${SPRING_BOOT_ADMIN_ENDPOINT_CACHE_ENABLED:-false}
+  depends_on:
+    mailpit:
+      condition: service_started
+  healthcheck:
+    test: [ "CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8081 && printf 'GET /actuator/health/readiness HTTP/1.0\\r\\n\\r\\n' >&3 && grep -q UP <&3" ]
+    interval: 5s
+    start_period: 30s
+
+services:
+  sba-1:
+    <<: *sba
+    container_name: sba-1
+    hostname: sba-1
+    environment:
+      <<: *sba-env
+      NODE_NAME: sba-1
+    ports:
+      - "8091:8080"
+      - "8191:8081"
+
+  sba-2:
+    <<: *sba
+    container_name: sba-2
+    hostname: sba-2
+    environment:
+      <<: *sba-env
+      NODE_NAME: sba-2
+    ports:
+      - "8092:8080"
+      - "8192:8081"
+
+  sba-3:
+    <<: *sba
+    container_name: sba-3
+    hostname: sba-3
+    environment:
+      <<: *sba-env
+      NODE_NAME: sba-3
+    ports:
+      - "8093:8080"
+      - "8193:8081"
+
+  nginx:
+    image: nginx:1.29-alpine
+    container_name: sba-lb
+    ports:
+      - "8080:80"
+    volumes:
+      - ./apps/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - sba-1
+      - sba-2
+      - sba-3
+
+  health-simulator-1:
+    image: health-simulator-hazelcast
+    container_name: health-simulator-1
+    hostname: health-simulator-1
+    environment:
+      SBA_URL: http://sba-lb
+    ports:
+      - "8281:8080"
+    depends_on:
+      - nginx
+
+  health-simulator-2:
+    image: health-simulator-hazelcast
+    container_name: health-simulator-2
+    hostname: health-simulator-2
+    environment:
+      SBA_URL: http://sba-lb
+    ports:
+      - "8282:8080"
+    depends_on:
+      - nginx
+
+  mailpit:
+    image: axllent/mailpit:v1.32
+    container_name: mailpit
+    ports:
+      - "8026:8025"
+
+  management-center:
+    image: hazelcast/management-center:5.9
+    container_name: hazelcast-management-center
+    profiles: [ "tools" ]
+    environment:
+      MC_DEFAULT_CLUSTER: spring-boot-admin
+      MC_DEFAULT_CLUSTER_MEMBERS: sba-1,sba-2,sba-3
+    ports:
+      - "8180:8080"
