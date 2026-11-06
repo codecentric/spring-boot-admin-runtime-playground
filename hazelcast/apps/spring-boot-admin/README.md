@@ -36,7 +36,7 @@ NODE_NAME=sba-2 java -jar target/app.jar --server.port=8092 --management.server.
 | Property | Values | Default |
 |---|---|---|
 | `playground.event-store` | `hazelcast`, `in-memory` | `hazelcast` |
-| `playground.notifier` | `properties`, `bean` | `properties` |
+| `playground.notifier` | `properties`, `bean`, `filtering-bean` | `properties` |
 | `playground.sharding.enabled` | `true`, `false` | `false` |
 | `playground.hazelcast.members` | comma separated hosts, empty = multicast | empty |
 | `playground.hazelcast.event-store-ttl-seconds` | seconds, 0 = none | `0` |

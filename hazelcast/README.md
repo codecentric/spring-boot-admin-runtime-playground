@@ -10,7 +10,7 @@ This setup is meant to reproduce Hazelcast related issues and to try out changes
 |---|---|
 | [#2795](https://github.com/codecentric/spring-boot-admin/issues/2795) Old instances not removed after redeploy | `default`, `event-store-ttl` + `./redeploy.sh` |
 | [#4773](https://github.com/codecentric/spring-boot-admin/issues/4773) Selective Hazelcast support (workaround) | `in-memory-event-store` |
-| [#5739](https://github.com/codecentric/spring-boot-admin/pull/5739) Selective Hazelcast caches via properties | `selective-caches` (needs PR build), `aot` |
+| [#5739](https://github.com/codecentric/spring-boot-admin/pull/5739) Selective Hazelcast caches via properties | `selective-caches`, `sent-notifications-disabled`, `hazelcast-disabled`, `aot` (need PR build) |
 | [#5726](https://github.com/codecentric/spring-boot-admin/pull/5726) Hazelcast notification trigger with property notifiers | `default` vs. `notifier-bean` |
 | [#5743](https://github.com/codecentric/spring-boot-admin/issues/5743) Splitting the work across nodes | `sharding` |
 | [#5266](https://github.com/codecentric/spring-boot-admin/pull/5266) Server side actuator response cache | `endpoint-cache` (needs PR build) |
@@ -53,9 +53,9 @@ chmod u+x *.sh apps/*/build.sh
 
 ```bash
 # in your spring-boot-admin checkout, on the PR branch
-./mvnw install -DskipTests -pl spring-boot-admin-server,spring-boot-admin-starter-server -am
+./mvnw install -DskipTests -Drevision=4.1.5-pr5739-SNAPSHOT -pl spring-boot-admin-starter-server -am
 # here
-SBA_VERSION=4.1.5-SNAPSHOT ./buildAndRunAll.sh selective-caches
+SBA_VERSION=4.1.5-pr5739-SNAPSHOT ./buildAndRunAll.sh selective-caches
 ```
 
 ## Stop Everything
@@ -128,6 +128,41 @@ Things to look at:
 
 `./run.sh selective-caches` sets the properties from PR #5739 (`spring.boot.admin.hazelcast.*-enabled`). It needs a
 build that contains the PR. Older versions ignore the properties.
+
+#### Results with the PR build (head `cf35dd37b`)
+
+```bash
+# in the spring-boot-admin checkout, on the PR branch; own version so 4.1.4-SNAPSHOT in ~/.m2 is not overwritten
+./mvnw install -DskipTests -Drevision=4.1.5-pr5739-SNAPSHOT -pl spring-boot-admin-starter-server -am
+# here
+SBA_VERSION=4.1.5-pr5739-SNAPSHOT ./buildAndRunAll.sh selective-caches
+```
+
+| Scenario | Event store | Notification trigger | Hazelcast maps | Mails per status change |
+|---|---|---|---|---|
+| `default` | Hazelcast | `NotificationTrigger` | event-store | 3 (bug from #5726, not fixed by this PR) |
+| `selective-caches` | **InMemory** | `NotificationTrigger` | none | — |
+| `hazelcast-disabled` | InMemory | `NotificationTrigger` | none | — |
+| `notifier-bean` | — | — | — | **context fails to start** (see below) |
+| `notifier-filtering-bean` | Hazelcast | `HazelcastNotificationTrigger` | event-store, sent-notifications | 1 |
+| `sent-notifications-disabled` | Hazelcast | **`NotificationTrigger`** | event-store | 3 |
+| `selective-caches` + `notifier-filtering-bean` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
+| `aot` + `selective-caches` | **InMemory** | `NotificationTrigger` | none | — |
+
+Combine scenarios with several env files:
+`docker compose --env-file scenarios/selective-caches.env --env-file scenarios/notifier-filtering-bean.env up -d --force-recreate`.
+
+Findings:
+- The flags work at runtime, **also with AOT** (`aot` + `selective-caches`, image built without the property set).
+  The implementation is picked inside the factory methods, as asked in the review.
+- `notifier-bean` (a single user `MailNotifier` bean) does not start:
+  `filteringNotifier -> compositeNotifier -> filteringNotifier` circular reference. This comes from #5737
+  (auto-created `FilteringNotifier`), which is on master and fixed by #5726. It also happens with
+  `notification-filters-enabled=false`, since the `FilteringNotifier` bean is still created.
+  `notifier-filtering-bean` uses a user defined `@Primary FilteringNotifier`, which avoids the cycle
+  ([FilteringNotifierBeanScenario](apps/spring-boot-admin/src/main/java/de/codecentric/springbootadmin/scenario/FilteringNotifierBeanScenario.java)).
+- With property notifiers the `*-enabled` flags for notifications have no effect, because the Hazelcast notifier
+  configuration does not apply at all (#5726).
 
 **AOT:** the review on #5739 says `@ConditionalOnProperty` is evaluated at build time when AOT is used. The images run
 **without** AOT by default, so the playground switches work at runtime. `./run.sh aot` enables AOT, and then only the

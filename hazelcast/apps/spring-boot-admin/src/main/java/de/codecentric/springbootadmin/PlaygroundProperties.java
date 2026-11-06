@@ -27,6 +27,6 @@ public record PlaygroundProperties(
   }
 
   public enum NotifierMode {
-    PROPERTIES, BEAN
+    PROPERTIES, BEAN, FILTERING_BEAN
   }
 }
