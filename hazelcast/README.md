@@ -164,6 +164,22 @@ Findings:
 - With property notifiers the `*-enabled` flags for notifications have no effect, because the Hazelcast notifier
   configuration does not apply at all (#5726).
 
+#### Results with the PR #5726 build (head `4c5b3eed6`)
+
+Built the same way (`-Drevision=4.1.5-pr5726-SNAPSHOT`, from a separate worktree).
+
+| Scenario | Notification trigger | Mails per status change |
+|---|---|---|
+| `default` (property notifier) | `HazelcastNotificationTrigger` | 1 (3 on 4.1.4) |
+| `notifier-bean` | `HazelcastNotificationTrigger` | 1 (context failed to start before) |
+| `notifier-filtering-bean` | `HazelcastNotificationTrigger` | 1 |
+| `aot` | `HazelcastNotificationTrigger` | 1 |
+| `default`, sba-1 restarted before the change | `HazelcastNotificationTrigger` | 1 |
+
+The PR's own tests pass (`AdminServerHazelcastAutoConfigurationTest`, `AdminServerAutoConfigurationTest`,
+`HazelcastNotificationTriggerTest`, `AdminApplicationHazelcastTest`: 17 tests).
+Merging #5739 (`cf35dd37b`) on top of #5726 conflicts in `AdminServerHazelcastAutoConfiguration`, so #5739 needs a rebase.
+
 **AOT:** the review on #5739 says `@ConditionalOnProperty` is evaluated at build time when AOT is used. The images run
 **without** AOT by default, so the playground switches work at runtime. `./run.sh aot` enables AOT, and then only the
 values present at `mvn package` time apply. To test this, build with the property set, for example
