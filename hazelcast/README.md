@@ -164,6 +164,25 @@ Findings:
 - With property notifiers the `*-enabled` flags for notifications have no effect, because the Hazelcast notifier
   configuration does not apply at all (#5726).
 
+#### Results with #5739 rebased on master including #5726 (`921fedef1`)
+
+Local rebase of the PR onto `c2ecfa470` (the squashed PR commit, `pr-5739-rebased` in the spring-boot-admin checkout).
+The flags are applied in the `sentNotificationsMap` (`null` if disabled -> plain trigger) and
+`notificationFiltersMap` (local map if disabled) beans. The PR's own tests, adapted to #5726, pass (21 tests).
+
+| Scenario | Event store | Notification trigger | Hazelcast maps | Mails |
+|---|---|---|---|---|
+| `default` | Hazelcast | `HazelcastNotificationTrigger` | event-store, sent-notifications | 1 |
+| `notifier-bean` | Hazelcast | `HazelcastNotificationTrigger` | event-store, sent-notifications | 1 (starts, no cycle) |
+| `selective-caches` (property notifier) | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | **1** |
+| `selective-caches` + `notifier-bean` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
+| `aot` + `selective-caches` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
+| `sent-notifications-disabled` | Hazelcast | `NotificationTrigger` | event-store | 3 (every node notifies, as documented) |
+| `hazelcast-disabled` | InMemory | `NotificationTrigger` | none | one per node (4 seen, one node sent twice, not investigated) |
+
+`selective-caches` is now the setup requested in #4773: local events, clustered notification deduplication, also with
+property notifiers.
+
 #### Results with the PR #5726 build (head `4c5b3eed6`)
 
 Built the same way (`-Drevision=4.1.5-pr5726-SNAPSHOT`, from a separate worktree).
