@@ -147,14 +147,12 @@ SBA_VERSION=4.1.5-pr5739-SNAPSHOT ./buildAndRunAll.sh selective-caches
 | `notifier-filtering-bean` | Hazelcast | `HazelcastNotificationTrigger` | event-store, sent-notifications | 1 |
 | `sent-notifications-disabled` | Hazelcast | **`NotificationTrigger`** | event-store | 3 |
 | `selective-caches` + `notifier-filtering-bean` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
-| `aot` + `selective-caches` | **InMemory** | `NotificationTrigger` | none | — |
 
 Combine scenarios with several env files:
 `docker compose --env-file scenarios/selective-caches.env --env-file scenarios/notifier-filtering-bean.env up -d --force-recreate`.
 
 Findings:
-- The flags work at runtime, **also with AOT** (`aot` + `selective-caches`, image built without the property set).
-  The implementation is picked inside the factory methods, as asked in the review.
+- The flags work at runtime.
 - `notifier-bean` (a single user `MailNotifier` bean) does not start:
   `filteringNotifier -> compositeNotifier -> filteringNotifier` circular reference. This comes from #5737
   (auto-created `FilteringNotifier`), which is on master and fixed by #5726. It also happens with
@@ -166,6 +164,11 @@ Findings:
 
 #### Results with #5739 rebased on master including #5726 (`921fedef1`)
 
+**Update:** the PR head after the force push (`da1b8914c`) does not match this. It puts `@ConditionalOnProperty` on
+`sentNotificationsMap` and `notificationFiltersMap`. It is conflict free and its tests pass, but with real AOT
+(image built without the property) `sent-notifications-enabled=false` is ignored: `HazelcastNotificationTrigger` and
+the sent-notifications map are still used. Without AOT it works.
+
 Local rebase of the PR onto `c2ecfa470` (the squashed PR commit, `pr-5739-rebased` in the spring-boot-admin checkout).
 The flags are applied in the `sentNotificationsMap` (`null` if disabled -> plain trigger) and
 `notificationFiltersMap` (local map if disabled) beans. The PR's own tests, adapted to #5726, pass (21 tests).
@@ -176,7 +179,7 @@ The flags are applied in the `sentNotificationsMap` (`null` if disabled -> plain
 | `notifier-bean` | Hazelcast | `HazelcastNotificationTrigger` | event-store, sent-notifications | 1 (starts, no cycle) |
 | `selective-caches` (property notifier) | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | **1** |
 | `selective-caches` + `notifier-bean` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
-| `aot` + `selective-caches` | **InMemory** | `HazelcastNotificationTrigger` | sent-notifications | 1 |
+| real AOT (`-Dspring.aot.enabled=true`) + `default` / `sent-notifications-disabled` / `selective-caches` | as without AOT | as without AOT | as without AOT | 1 / 3 / 1 |
 | `sent-notifications-disabled` | Hazelcast | `NotificationTrigger` | event-store | 3 (every node notifies, as documented) |
 | `hazelcast-disabled` | InMemory | `NotificationTrigger` | none | one per node (4 seen, one node sent twice, not investigated) |
 
@@ -192,7 +195,6 @@ Built the same way (`-Drevision=4.1.5-pr5726-SNAPSHOT`, from a separate worktree
 | `default` (property notifier) | `HazelcastNotificationTrigger` | 1 (3 on 4.1.4) |
 | `notifier-bean` | `HazelcastNotificationTrigger` | 1 (context failed to start before) |
 | `notifier-filtering-bean` | `HazelcastNotificationTrigger` | 1 |
-| `aot` | `HazelcastNotificationTrigger` | 1 |
 | `default`, sba-1 restarted before the change | `HazelcastNotificationTrigger` | 1 |
 
 The PR's own tests pass (`AdminServerHazelcastAutoConfigurationTest`, `AdminServerAutoConfigurationTest`,
@@ -200,8 +202,10 @@ The PR's own tests pass (`AdminServerHazelcastAutoConfigurationTest`, `AdminServ
 Merging #5739 (`cf35dd37b`) on top of #5726 conflicts in `AdminServerHazelcastAutoConfiguration`, so #5739 needs a rebase.
 
 **AOT:** the review on #5739 says `@ConditionalOnProperty` is evaluated at build time when AOT is used. The images run
-**without** AOT by default, so the playground switches work at runtime. `./run.sh aot` enables AOT, and then only the
-values present at `mvn package` time apply. To test this, build with the property set, for example
+**without** AOT by default, so the playground switches work at runtime. `./run.sh aot` starts with
+`-Dspring.aot.enabled=true` (the env var `SPRING_AOT_ENABLED` does **not** enable AOT; check for `Starting AOT-processed`
+in the log), and then only the values present at `mvn package` time apply. Earlier AOT results in this file that
+used the env var were not real AOT runs and are removed. To test this, build with the property set, for example
 `(cd apps/spring-boot-admin && SPRING_BOOT_ADMIN_HAZELCAST_EVENT_STORE_ENABLED=false ./build.sh)`, and then switch it at runtime.
 
 ### Issue #5743: splitting the work across nodes
