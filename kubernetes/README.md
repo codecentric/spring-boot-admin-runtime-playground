@@ -61,6 +61,7 @@ http://localhost/spring-boot-admin-discoveryclient
 - [./apps/spring-boot-admin-kubernetes/README.md](./apps/spring-boot-admin-kubernetes/README.md)
 - [./apps/spring-boot-admin-fabric8/README.md](./apps/spring-boot-admin-fabric8/README.md)
 - [./apps/spring-boot-admin-discoveryclient/README.md](./apps/spring-boot-admin-discoveryclient/README.md)
+- [./apps/spring-cloud-kubernetes-discoveryserver/README.md](./apps/spring-cloud-kubernetes-discoveryserver/README.md)
 - [./apps/health-simulator/README.md](./apps/health-simulator/README.md)
 
 ## Uninstall Everything
