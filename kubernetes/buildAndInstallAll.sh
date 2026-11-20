@@ -2,7 +2,9 @@
 
 helm upgrade --install traefik helm-charts/traefik
 
-helm upgrade --install spring-cloud-kubernetes-discoveryserver helm-charts/spring-cloud-kubernetes-discoveryserver
+cd apps/spring-cloud-kubernetes-discoveryserver
+./buildAndInstall.sh
+cd ../..
 
 cd apps/spring-boot-admin-kubernetes
 ./buildAndInstall.sh
