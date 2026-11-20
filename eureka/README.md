@@ -22,5 +22,6 @@ Admin UI: http://localhost:8080/
 
 ## Stop Everything
 ```bash
-docker compose down -v
+chmod u+x uninstall.sh
+./uninstall.sh
 ```
