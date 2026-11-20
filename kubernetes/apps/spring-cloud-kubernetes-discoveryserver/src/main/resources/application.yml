@@ -34,6 +34,8 @@ info: # Application-Infos for the Info-Actuator
   artifact: "@pom.artifactId@"
   description: "@pom.description@"
   version: "@pom.version@"
+  # Version of the wrapped discovery server release (pom.version is only the wrapper module)
+  discoveryserver-version: "@spring-cloud-kubernetes.version@"
   spring-boot: "@pom.parent.version@"
   # Tags for the Spring Boot Admin UI
   tags:
