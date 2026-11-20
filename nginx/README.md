@@ -23,5 +23,6 @@ chmod u+x buildAndRunAll.sh
 
 ## Stop Everything
 ```bash
-docker compose down -v
+chmod u+x uninstall.sh
+./uninstall.sh
 ```
