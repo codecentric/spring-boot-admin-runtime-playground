@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # Build App
 mvn clean install
